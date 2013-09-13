@@ -14,9 +14,28 @@
 #   Scott J Roberts - @sroberts
 
 VIRUS_TOTAL_API_KEY = process.env.VIRUS_TOTAL_API_KEY
+vt_file_report_url = "https://www.virustotal.com/vtapi/v2/file/report"
 
 module.exports = (robot) ->
   robot.respond /virustotal (.*)/i, (msg) ->
-    # If there's strings generate rule with strings
+    # First paramater is the file hash to look for
+    search_resource = msg.match[1].toLowerCase()
 
-    # If there aren't then just generate a template
+    parameters = {
+      "apikey": VIRUS_TOTAL_API_KEY,
+      "resource": search_resource
+    }
+
+    data = "apikey=#{encodeURIComponent VIRUS_TOTAL_API_KEY}&resource=#{encodeURIComponent search_resource}"
+
+    robot.http(vt_file_report_url)
+      .post(data) (err, res, body) ->
+        vt_json = JSON.parse(body)
+
+        summary = """ VirusTotal Result: #{vt_json.resource}
+        - Scanned at: #{vt_json.scan_date}
+        - Results:    #{vt_json.positives}/#{vt_json.total}
+        - Link:       #{vt_json.permalink}
+        """
+
+        msg.send summary
