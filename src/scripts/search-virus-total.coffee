@@ -13,6 +13,8 @@
 # Author:
 #   Scott J Roberts - @sroberts
 
+VIRUS_TOTAL_API_KEY = process.env.VIRUS_TOTAL_API_KEY
+
 module.exports = (robot) ->
   robot.respond /virustotal (.*)/i, (msg) ->
     # If there's strings generate rule with strings
