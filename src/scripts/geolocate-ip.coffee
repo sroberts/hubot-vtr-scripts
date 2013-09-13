@@ -1,3 +1,4 @@
+
 # Description:
 #   Geolocate an IP Address based on http://www.hostip.info/use.html
 #
@@ -16,7 +17,7 @@
 module.exports = (robot) ->
   robot.respond /geolocate (.+)$/i, (msg) ->
     target_ip = msg.match[1].toLowerCase()
-    request_string = robot.http("http://api.hostip.info/get_html.php?ip=#{target_ip}")
+    request_string = robot.http("http://api.hostip.info/get_json.php?ip=#{target_ip}")
 
     .get() (err, res, body) ->
-      msg.send body
+      msg.send "#{JSON.parse(body).ip} is from #{JSON.parse(body).city}, #{JSON.parse(body).country_nam}."
