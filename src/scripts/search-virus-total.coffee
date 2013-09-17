@@ -48,13 +48,11 @@ module.exports = (robot) ->
 
   robot.respond /virustotal url (.*)/i, (msg) ->
     url = msg.match[1].toLowerCase()
-    msg.send "Test: URL #{url}"
 
     data = "apikey=#{encodeURIComponent VIRUS_TOTAL_API_KEY}&resource=#{encodeURIComponent url}"
 
     robot.http(vt_url_report_url)
       .post(data) (err, res, body) ->
-        msg.send body
         # vt_json = JSON.parse(body)
         #
         # summary = """ VirusTotal URL Result: #{vt_json.resource}
