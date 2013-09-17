@@ -34,7 +34,7 @@ module.exports = (robot) ->
       .post(data) (err, res, body) ->
         vt_json = JSON.parse(body)
 
-        if vt_json.response_code == 1:
+        if vt_json.response_code == 1
           summary = """ VirusTotal Result: #{vt_json.resource}
           - Scanned at: #{vt_json.scan_date}
           - Results:    #{vt_json.positives}/#{vt_json.total}
