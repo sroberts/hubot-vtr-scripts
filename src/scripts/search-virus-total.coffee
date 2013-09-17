@@ -53,13 +53,16 @@ module.exports = (robot) ->
 
     robot.http(vt_url_report_url)
       .post(data) (err, res, body) ->
-        # vt_json = JSON.parse(body)
-        #
-        # summary = """ VirusTotal URL Result: #{vt_json.resource}
-        # - Scanned at: #{vt_json.scan_date}
-        # - Results:    #{vt_json.positives}/#{vt_json.total}
-        # - Link:       #{vt_json.permalink}
-        # """
+        vt_json = JSON.parse(body)
+
+        if vt_json.response_code == 1
+          summary = """ VirusTotal URL Result: #{vt_json.url}
+          - Scanned at: #{vt_json.scan_date}
+          - Results:    #{vt_json.positives}/#{vt_json.total}
+          - Link:       #{vt_json.permalink}
+          """
+
+          msg.send summary
 
 
 
