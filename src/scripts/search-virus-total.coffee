@@ -8,7 +8,9 @@
 #   None
 #
 # Commands:
-#   hubot virustotal <hash> - Searches VirusTotal for a hash
+#   hubot virustotal hash <hash> - Searches VirusTotal for a hash
+#   hubot virustotal url <hash> - Searches VirusTotal for a url
+#   hubot virustotal ip <hash> - Searches VirusTotal for a ip address
 #
 # Author:
 #   Scott J Roberts - @sroberts
