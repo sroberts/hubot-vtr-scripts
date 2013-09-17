@@ -65,27 +65,31 @@ module.exports = (robot) ->
           msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
 
 
-  robot.respond /virustotal ip (.*)/i, (msg) ->
-    ip = msg.match[1].toLowerCase()
+  #robot.respond /virustotal ip (.*)/i, (msg) ->
+    #ip = msg.match[1].toLowerCase()
 
-    robot.http(vt_ip_report_url)
-      .query("apikey": VIRUS_TOTAL_API_KEY, "ip": ip)
-      .get() (err, res, body) ->
+    #robot.http(vt_ip_report_url)
+      #.query("apikey": VIRUS_TOTAL_API_KEY, "ip": ip)
+      #.get() (err, res, body) ->
         #vt_json = JSON.parse(body)
-        msg.send body
 
         #if vt_json.response_code == 1
 
-          # summary = """ VirusTotal IP Result: #{vt_json.resource}
+          #console.log(vt_json.resolutions)
+          # for resolution in vt_json.resolutions
+          #   console.log("#{resolution}")
+
+          #console.log(vt_json.detected_urls)
+          # for detected_url in vt_json.detected_urls
+          #   console.log("#{detected_url}")
+
+          # summary = """ VirusTotal IP Result: #{ip}
           # - Scanned at: #{vt_json.scan_date}
           # - Results:    #{vt_json.positives}/#{vt_json.total}
           # - Link:       #{vt_json.permalink}
           # """
 
-          # for resolution of vt_json.resolutions
-          #   console.log("- #{resolution.last_resolved} : #{resolution.hostname}")
-
-        #vt_json
+          #msg.send summary
 
         #else
           #msg.send vt_json.verbose_msg
