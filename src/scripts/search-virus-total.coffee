@@ -64,6 +64,8 @@ module.exports = (robot) ->
 
           msg.send summary
 
+        else
+          msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
 
 
   robot.respond /virustotal ip (.*)/i, (msg) ->
