@@ -1,5 +1,5 @@
 # Description:
-#   Search Shodan for a string
+#   Search Shodan based on https://developers.shodan.io/shodan-rest.html
 #
 # Dependencies:
 #   None
