@@ -5,7 +5,7 @@
 #   None
 #
 # Configuration:
-#   None
+#   VIRUS_TOTAL_API_KEY environment variable needs to be set with your API key https://www.virustotal.com/en/documentation/public-api/
 #
 # Commands:
 #   hubot virustotal hash <hash> - Searches VirusTotal for a hash
