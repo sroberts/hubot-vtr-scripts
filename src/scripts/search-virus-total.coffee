@@ -16,19 +16,19 @@
 #   Scott J Roberts - @sroberts
 
 VIRUS_TOTAL_API_KEY = process.env.VIRUS_TOTAL_API_KEY
-vt_file_report_url = "https://www.virustotal.com/vtapi/v2/file/report"
+vt_url = "https://www.virustotal.com"
+
+vt_file_report_url = vt_url + "/vtapi/v2/file/report"
+vt_url_report_url = vt_url + "/vtapi/v2/url/report"
+vt_ip_report_url = vt_url + "/vtapi/v2/ip-address/report"
 
 module.exports = (robot) ->
-  robot.respond /virustotal (.*)/i, (msg) ->
+  robot.respond /virustotal hash (.*)/i, (msg) ->
     # First paramater is the file hash to look for
-    search_resource = msg.match[1].toLowerCase()
+    hash = msg.match[1].toLowerCase()
+    msg.send "Test: Hash #{hash}"
 
-    parameters = {
-      "apikey": VIRUS_TOTAL_API_KEY,
-      "resource": search_resource
-    }
-
-    data = "apikey=#{encodeURIComponent VIRUS_TOTAL_API_KEY}&resource=#{encodeURIComponent search_resource}"
+    data = "apikey=#{encodeURIComponent VIRUS_TOTAL_API_KEY}&resource=#{encodeURIComponent hash}"
 
     robot.http(vt_file_report_url)
       .post(data) (err, res, body) ->
@@ -41,3 +41,47 @@ module.exports = (robot) ->
         """
 
         msg.send summary
+
+  robot.respond /virustotal url (.*)/i, (msg) ->
+    url = msg.match[1].toLowerCase()
+    msg.send "Test: URL #{url}"
+
+    data = "apikey=#{encodeURIComponent VIRUS_TOTAL_API_KEY}&resource=#{encodeURIComponent url}"
+
+    robot.http(vt_url_report_url)
+      .post(data) (err, res, body) ->
+        msg.send body
+        # vt_json = JSON.parse(body)
+        #
+        # summary = """ VirusTotal URL Result: #{vt_json.resource}
+        # - Scanned at: #{vt_json.scan_date}
+        # - Results:    #{vt_json.positives}/#{vt_json.total}
+        # - Link:       #{vt_json.permalink}
+        # """
+
+
+
+  robot.respond /virustotal ip (.*)/i, (msg) ->
+    ip = msg.match[1].toLowerCase()
+
+    robot.http(vt_ip_report_url)
+      .query("apikey": VIRUS_TOTAL_API_KEY, "ip": ip)
+      .get() (err, res, body) ->
+        #vt_json = JSON.parse(body)
+        msg.send body
+
+        #if vt_json.response_code == 1
+
+          # summary = """ VirusTotal IP Result: #{vt_json.resource}
+          # - Scanned at: #{vt_json.scan_date}
+          # - Results:    #{vt_json.positives}/#{vt_json.total}
+          # - Link:       #{vt_json.permalink}
+          # """
+
+          # for resolution of vt_json.resolutions
+          #   console.log("- #{resolution.last_resolved} : #{resolution.hostname}")
+
+        #vt_json
+
+        #else
+          #msg.send vt_json.verbose_msg
