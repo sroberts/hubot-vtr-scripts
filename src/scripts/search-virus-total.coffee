@@ -24,10 +24,7 @@ vt_ip_report_url = vt_url + "/vtapi/v2/ip-address/report"
 
 module.exports = (robot) ->
   robot.respond /virustotal hash (.*)/i, (msg) ->
-    # First paramater is the file hash to look for
     hash = msg.match[1].toLowerCase()
-    msg.send "Test: Hash #{hash}"
-
     data = "apikey=#{encodeURIComponent VIRUS_TOTAL_API_KEY}&resource=#{encodeURIComponent hash}"
 
     robot.http(vt_file_report_url)
