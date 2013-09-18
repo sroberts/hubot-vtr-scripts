@@ -15,7 +15,7 @@
 
 SHODAN_KEY = process.env.SHODAN_KEY
 
-shodan_url = "http://www.shodanhq.com/api/"
+shodan_url = "http://www.shodanhq.com"
 
 module.exports = (robot) ->
   robot.respond /shodan (.*)/i, (msg) ->
