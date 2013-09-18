@@ -15,4 +15,8 @@
 
 module.exports = (robot) ->
   robot.respond /reverse dns (.*)/i, (msg) ->
-    # Get reverse dns
+    ip = msg.match[1].toLowerCase()
+    robot.http("http://api.hackertarget.com/reversedns/?q=#{ip}")
+      .get() (err, res, body) ->
+
+        msg.send "Reverse DNS: #{body}"
