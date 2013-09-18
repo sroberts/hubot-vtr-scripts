@@ -25,5 +25,3 @@ module.exports = (robot) ->
       #.query('ip': shodan_term, 'key': SHODAN_KEY)
       .get() (err, res, body) ->
         msg.send body
-        msg.send res
-        msg.send err
