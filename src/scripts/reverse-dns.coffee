@@ -1,5 +1,5 @@
 # Description:
-#   Get domains associated with a specific IP Address
+#   Get domains associated with a specific IP Address based on http://hackertarget.com/reverse-dns-lookup/
 #
 # Dependencies:
 #   None
