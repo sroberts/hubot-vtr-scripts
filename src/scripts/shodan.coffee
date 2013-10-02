@@ -5,7 +5,7 @@
 #   None
 #
 # Configuration:
-#   None
+#   SHODAN_API_KEY
 #
 # Commands:
 #   hubot shodan <string> - Search Shodan for any information about string
@@ -13,7 +13,7 @@
 # Author:
 #   Scott J Roberts - @sroberts
 
-SHODAN_KEY = process.env.SHODAN_KEY
+SHODAN_KEY = process.env.SHODAN_API_KEY
 
 shodan_url = "http://www.shodanhq.com"
 
