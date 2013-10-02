@@ -5,7 +5,7 @@
 #   None
 #
 # Configuration:
-#   VIRUS_TOTAL_API_KEY environment variable needs to be set with your API key https://www.virustotal.com/en/documentation/public-api/
+#   VIRUSTOTAL_API_KEY environment variable needs to be set with your API key https://www.virustotal.com/en/documentation/public-api/
 #
 # Commands:
 #   hubot virustotal hash <hash> - Searches VirusTotal for a hash
@@ -15,7 +15,7 @@
 # Author:
 #   Scott J Roberts - @sroberts
 
-VIRUS_TOTAL_API_KEY = process.env.VIRUS_TOTAL_API_KEY
+VIRUSTOTAL_API_KEY = process.env.VIRUSTOTAL_API_KEY
 vt_url = "https://www.virustotal.com"
 
 vt_file_report_url = vt_url + "/vtapi/v2/file/report"
