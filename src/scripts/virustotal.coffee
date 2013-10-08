@@ -23,46 +23,55 @@ vt_ip_report_url = vt_url + "/vtapi/v2/ip-address/report"
 
 module.exports = (robot) ->
   robot.respond /virustotal hash (.*)/i, (msg) ->
-    hash = msg.match[1].toLowerCase()
-    data = "apikey=#{encodeURIComponent VIRUS_TOTAL_API_KEY}&resource=#{encodeURIComponent hash}"
 
-    robot.http(vt_file_report_url)
-      .post(data) (err, res, body) ->
-        vt_json = JSON.parse(body)
+    if VIRUSTOTAL_API_KEY?
+      hash = msg.match[1].toLowerCase()
+      data = "apikey=#{encodeURIComponent VIRUS_TOTAL_API_KEY}&resource=#{encodeURIComponent hash}"
 
-        if vt_json.response_code == 1
-          summary = """ VirusTotal Result: #{vt_json.resource}
-          - Scanned at: #{vt_json.scan_date}
-          - Results:    #{vt_json.positives}/#{vt_json.total}
-          - Link:       #{vt_json.permalink}
-          """
+      robot.http(vt_file_report_url)
+        .post(data) (err, res, body) ->
+          vt_json = JSON.parse(body)
 
-          msg.send summary
+          if vt_json.response_code == 1
+            summary = """ VirusTotal Result: #{vt_json.resource}
+            - Scanned at: #{vt_json.scan_date}
+            - Results:    #{vt_json.positives}/#{vt_json.total}
+            - Link:       #{vt_json.permalink}
+            """
 
-        else
-          msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
+            msg.send summary
+
+          else
+            msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
+
+    else
+      msg.send "VirusTotal API key not configured. Get one at https://www.virustotal.com/en/user/ in the API tab"
 
   robot.respond /virustotal url (.*)/i, (msg) ->
-    url = msg.match[1].toLowerCase()
 
-    data = "apikey=#{encodeURIComponent VIRUS_TOTAL_API_KEY}&resource=#{encodeURIComponent url}"
+    if VIRUSTOTAL_API_KEY?
+      url = msg.match[1].toLowerCase()
 
-    robot.http(vt_url_report_url)
-      .post(data) (err, res, body) ->
-        vt_json = JSON.parse(body)
+      data = "apikey=#{encodeURIComponent VIRUS_TOTAL_API_KEY}&resource=#{encodeURIComponent url}"
 
-        if vt_json.response_code == 1
-          summary = """ VirusTotal URL Result: #{vt_json.url}
-          - Scanned at: #{vt_json.scan_date}
-          - Results:    #{vt_json.positives}/#{vt_json.total}
-          - Link:       #{vt_json.permalink}
-          """
+      robot.http(vt_url_report_url)
+        .post(data) (err, res, body) ->
+          vt_json = JSON.parse(body)
 
-          msg.send summary
+          if vt_json.response_code == 1
+            summary = """ VirusTotal URL Result: #{vt_json.url}
+            - Scanned at: #{vt_json.scan_date}
+            - Results:    #{vt_json.positives}/#{vt_json.total}
+            - Link:       #{vt_json.permalink}
+            """
 
-        else
-          msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
+            msg.send summary
 
+          else
+            msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
+
+    else
+      msg.send "VirusTotal API key not configured. Get one at https://www.virustotal.com/en/user/ in the API tab"
 
   #   hubot virustotal ip <hash> - Searches VirusTotal for a ip address
   #robot.respond /virustotal ip (.*)/i, (msg) ->
