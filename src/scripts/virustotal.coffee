@@ -26,7 +26,7 @@ module.exports = (robot) ->
 
     if VIRUSTOTAL_API_KEY?
       hash = msg.match[1].toLowerCase()
-      data = "apikey=#{encodeURIComponent VIRUS_TOTAL_API_KEY}&resource=#{encodeURIComponent hash}"
+      data = "apikey=#{encodeURIComponent VIRUSTOTAL_API_KEY}&resource=#{encodeURIComponent hash}"
 
       robot.http(vt_file_report_url)
         .post(data) (err, res, body) ->
@@ -54,7 +54,7 @@ module.exports = (robot) ->
     if VIRUSTOTAL_API_KEY?
       url = msg.match[1].toLowerCase()
 
-      data = "apikey=#{encodeURIComponent VIRUS_TOTAL_API_KEY}&resource=#{encodeURIComponent url}"
+      data = "apikey=#{encodeURIComponent VIRUSTOTAL_API_KEY}&resource=#{encodeURIComponent url}"
 
       robot.http(vt_url_report_url)
         .post(data) (err, res, body) ->
