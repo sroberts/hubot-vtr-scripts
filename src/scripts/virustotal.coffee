@@ -9,7 +9,7 @@
 #
 # Commands:
 #   hubot virustotal hash <hash> - Searches VirusTotal for a hash
-#   hubot virustotal url <hash> - Searches VirusTotal for a url
+#   hubot virustotal url <url> - Searches VirusTotal for a url
 #
 # Author:
 #   Scott J Roberts - @sroberts
