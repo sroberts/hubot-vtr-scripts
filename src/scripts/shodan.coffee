@@ -5,7 +5,7 @@
 #   None
 #
 # Configuration:
-#   SHODAN_API_KEY
+#   SHODAN_API_KEY - Sign up at http://www.shodanhq.com/api_doc
 #
 # Commands:
 #   hubot shodan <string> - Search Shodan for any information about string
