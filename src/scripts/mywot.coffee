@@ -55,28 +55,34 @@ reputation = (number) ->
 
 module.exports = (robot) ->
   robot.respond /mywot (.*)/i, (msg) ->
-    mywot_term = msg.match[1].toLowerCase()
 
-    robot.http(mywot_url + "hosts=#{mywot_term}/")
-      .get() (err, res, body) ->
+    if MYWOT_API_KEY?
 
-        mywot_json = JSON.parse body
+      mywot_term = msg.match[1].toLowerCase()
 
-        if mywot_json[mywot_term][0] == undefined
-          mywot_profile = "No MyWOT information found for #{mywot_term}"
+      robot.http(mywot_url + "hosts=#{mywot_term}/")
+        .get() (err, res, body) ->
 
-        else
-          mywot_trustworthiness = mywot_json[mywot_term][0]
-          mywot_childfriendliness = mywot_json[mywot_term][4]
-          mywot_categories = mywot_json[mywot_term]["categories"]
+          mywot_json = JSON.parse body
 
-          mywot_profile = """MyWot Result for #{mywot_term}
-          ---------------------------
-          - Trustworthiness: #{reputation(mywot_trustworthiness[0])} (Confidence: #{mywot_trustworthiness[1]}%)
-          - Child Safety:    #{reputation(mywot_childfriendliness[0])} (Confidence: #{mywot_childfriendliness[1]}%)
-          - Categories: """
+          if mywot_json[mywot_term][0] == undefined
+            mywot_profile = "No MyWOT information found for #{mywot_term}"
 
-          for key, value of mywot_categories
-            mywot_profile += "\n  - #{mywot_category_mapping[key]} (Confidence: #{value}%)"
+          else
+            mywot_trustworthiness = mywot_json[mywot_term][0]
+            mywot_childfriendliness = mywot_json[mywot_term][4]
+            mywot_categories = mywot_json[mywot_term]["categories"]
 
-        msg.send mywot_profile
+            mywot_profile = """MyWot Result for #{mywot_term}
+            ---------------------------
+            - Trustworthiness: #{reputation(mywot_trustworthiness[0])} (Confidence: #{mywot_trustworthiness[1]}%)
+            - Child Safety:    #{reputation(mywot_childfriendliness[0])} (Confidence: #{mywot_childfriendliness[1]}%)
+            - Categories: """
+
+            for key, value of mywot_categories
+              mywot_profile += "\n  - #{mywot_category_mapping[key]} (Confidence: #{value}%)"
+
+          msg.send mywot_profile
+
+    else
+      msg.send "MyWoT API key not configured. Get one at http://www.mywot.com/"
