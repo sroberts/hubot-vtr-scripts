@@ -13,7 +13,7 @@
 # Author:
 #   Scott J Roberts - @sroberts
 
-api_url = http://api.hostip.info
+api_url = "http://api.hostip.info"
 
 module.exports = (robot) ->
   robot.respond /geolocate (.+)$/i, (msg) ->
