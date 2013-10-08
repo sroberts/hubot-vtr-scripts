@@ -44,14 +44,12 @@ api_url = "http://api.mywot.com"
 request_url = api_url + "/0.4/public_link_json2?key=#{MYWOT_API_KEY}&"
 
 reputation = (number) ->
-  rep = switch
+  switch
     when number >= 80 then "Excellent"
     when number >= 60 then "Good"
     when number >= 40 then "Unsatisfactory"
     when number >= 20 then "Poor"
     when number >= 0 then "Very Poor"
-
-  return rep
 
 
 module.exports = (robot) ->
