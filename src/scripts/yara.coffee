@@ -8,14 +8,13 @@
 #   None…
 #
 # Commands:
-#   hubot yara - Generates default rule template
-#   hubot yara "string1" "string2" ... - Generates rule with given strings
+#   hubot yara template- Generates default rule template
 #
 # Author:
 #   Scott J Roberts - @sroberts
 
 module.exports = (robot) ->
-  robot.respond /yara/i, (msg) ->
+  robot.respond /yara template/i, (msg) ->
     # Default Values
     yara_rule_name = "rule_name"
     yara_rule_category = "category"

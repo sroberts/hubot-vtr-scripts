@@ -8,8 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot yara - Generates default rule template
-#   hubot yara "string1" "string2" ... - Generates rule with given strings
+#   hubot codename - Generates a few potential codenames for you
 #
 # Author:
 #   Scott J Roberts - @sroberts

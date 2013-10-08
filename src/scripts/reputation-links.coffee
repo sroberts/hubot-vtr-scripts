@@ -8,8 +8,8 @@
 #   None
 #
 # Commands:
-#   hubot yara - Generates default rule template
-#   hubot yara "string1" "string2" ... - Generates rule with given strings
+#   hubot reputation ip <ip> - Generates links to research an IP
+#   hubot reputation url <url> - Generates links to research an URL
 #
 # Author:
 #   Scott J Roberts - @sroberts
