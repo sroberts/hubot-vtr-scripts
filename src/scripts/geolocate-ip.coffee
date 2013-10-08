@@ -19,4 +19,5 @@ module.exports = (robot) ->
     request_string = robot.http("http://api.hostip.info/get_json.php?ip=#{target_ip}")
 
     .get() (err, res, body) ->
-      msg.send "#{JSON.parse(body).ip} is from #{JSON.parse(body).city}, #{JSON.parse(body).country_name}."
+        geolocation_json = JSON.parse(body)
+        msg.send "#{geolocation_json.ip} is from #{geolocation_json.city}, #{geolocation_json.country_name}."
