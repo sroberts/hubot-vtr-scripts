@@ -25,8 +25,6 @@ module.exports = (robot) ->
 
       request_url = api_url + "/search/v3/json/?email=#{encodeURIComponent target_email}&exact_name=0&query_params_mode=and&key=#{PIPL_API_KEY}"
 
-      msg.send request_url + "&pretty=true" #foar great debugging!
-
       request_response = robot.http(request_url)
 
       .get() (err, res, body) ->

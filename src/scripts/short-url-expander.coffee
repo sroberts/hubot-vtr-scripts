@@ -22,7 +22,6 @@ module.exports = (robot) ->
     short_url_encoded = "#{encodeURIComponent short_url}"
 
     request_url = long_url_api + short_url_encoded
-    msg.send request_url
 
     robot.http(request_url)
       .get() (err, res, body) ->
