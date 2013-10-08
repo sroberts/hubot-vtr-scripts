@@ -26,7 +26,6 @@ module.exports = (robot) ->
       request_url = api_url + "/api/host?key=#{SHODAN_KEY}&ip=#{shodan_term}"
 
       robot.http(request_url)
-        #.query('ip': shodan_term, 'key': SHODAN_KEY)
         .get() (err, res, body) ->
 
           if res.statusCode is 200
