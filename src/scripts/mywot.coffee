@@ -40,7 +40,8 @@ mywot_category_mapping = {
 
 MYWOT_API_KEY = process.env.MYWOT_API_KEY
 
-mywot_url = "http://api.mywot.com/0.4/public_link_json2?key=#{MYWOT_API_KEY}&"
+api_url = "http://api.mywot.com"
+request_url = api_url + "/0.4/public_link_json2?key=#{MYWOT_API_KEY}&"
 
 reputation = (number) ->
   rep = switch
@@ -60,7 +61,7 @@ module.exports = (robot) ->
 
       mywot_term = msg.match[1].toLowerCase()
 
-      robot.http(mywot_url + "hosts=#{mywot_term}/")
+      robot.http(request_url + "hosts=#{mywot_term}/")
         .get() (err, res, body) ->
 
           mywot_json = JSON.parse body
@@ -85,4 +86,4 @@ module.exports = (robot) ->
           msg.send mywot_profile
 
     else
-      msg.send "MyWoT API key not configured. Get one at http://www.mywot.com/"
+      msg.send "Error: MyWoT API key not configured. Get one at http://www.mywot.com/"

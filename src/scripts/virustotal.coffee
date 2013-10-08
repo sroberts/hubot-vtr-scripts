@@ -30,20 +30,22 @@ module.exports = (robot) ->
 
       robot.http(vt_file_report_url)
         .post(data) (err, res, body) ->
-          vt_json = JSON.parse(body)
+          if res.statusCode is 200
+            vt_json = JSON.parse(body)
 
-          if vt_json.response_code == 1
-            summary = """ VirusTotal Result: #{vt_json.resource}
-            - Scanned at: #{vt_json.scan_date}
-            - Results:    #{vt_json.positives}/#{vt_json.total}
-            - Link:       #{vt_json.permalink}
-            """
+            if vt_json.response_code == 1
+              summary = """ VirusTotal Result: #{vt_json.resource}
+              - Scanned at: #{vt_json.scan_date}
+              - Results:    #{vt_json.positives}/#{vt_json.total}
+              - Link:       #{vt_json.permalink}
+              """
 
-            msg.send summary
+              msg.send summary
 
+            else
+              msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
           else
-            msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
-
+            msg.send "Error: Couldn't access #{vt_url}."
     else
       msg.send "VirusTotal API key not configured. Get one at https://www.virustotal.com/en/user/ in the API tab"
 
@@ -56,19 +58,25 @@ module.exports = (robot) ->
 
       robot.http(vt_url_report_url)
         .post(data) (err, res, body) ->
-          vt_json = JSON.parse(body)
 
-          if vt_json.response_code == 1
-            summary = """ VirusTotal URL Result: #{vt_json.url}
-            - Scanned at: #{vt_json.scan_date}
-            - Results:    #{vt_json.positives}/#{vt_json.total}
-            - Link:       #{vt_json.permalink}
-            """
+          if res.statusCode is 200
+            vt_json = JSON.parse(body)
 
-            msg.send summary
+            if vt_json.response_code == 1
+              summary = """ VirusTotal URL Result: #{vt_json.url}
+              - Scanned at: #{vt_json.scan_date}
+              - Results:    #{vt_json.positives}/#{vt_json.total}
+              - Link:       #{vt_json.permalink}
+              """
+
+              msg.send summary
+
+            else
+              msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
 
           else
-            msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
+            msg.send "Error: Couldn't access #{vt_url}."
+
 
     else
       msg.send "VirusTotal API key not configured. Get one at https://www.virustotal.com/en/user/ in the API tab"
