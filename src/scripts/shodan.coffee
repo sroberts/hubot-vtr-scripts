@@ -23,7 +23,7 @@ module.exports = (robot) ->
     if SHODAN_KEY?
       shodan_term = msg.match[1].toLowerCase()
 
-      request_url = shodan_url + "/api/host?key=#{SHODAN_KEY}&ip=#{shodan_term}"
+      request_url = api_url + "/api/host?key=#{SHODAN_KEY}&ip=#{shodan_term}"
 
       robot.http(request_url)
         #.query('ip': shodan_term, 'key': SHODAN_KEY)
