@@ -5,7 +5,7 @@
 #   None
 #
 # Configuration:
-#   PIPL_API_KEY
+#   PIPL_API_KEY - Sign up at http://dev.pipl.com/
 #
 # Commands:
 #   hubot pipl email <email_address> - Looks up a person on Pipl by email address
