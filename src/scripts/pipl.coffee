@@ -18,47 +18,51 @@ PIPL_API_KEY = process.env.PIPL_API_KEY
 module.exports = (robot) ->
   robot.respond /pipl email (.*)/i, (msg) ->
 
-    target_email = msg.match[1].toLowerCase()
+    if PIPL_API_KEY?
+      target_email = msg.match[1].toLowerCase()
 
-    request_url = "http://api.pipl.com/search/v3/json/?email=#{encodeURIComponent target_email}&exact_name=0&query_params_mode=and&key=#{PIPL_API_KEY}"
+      request_url = "http://api.pipl.com/search/v3/json/?email=#{encodeURIComponent target_email}&exact_name=0&query_params_mode=and&key=#{PIPL_API_KEY}"
 
-    msg.send request_url + "&pretty=true" #foar great debugging!
+      msg.send request_url + "&pretty=true" #foar great debugging!
 
-    request_response = robot.http(request_url)
+      request_response = robot.http(request_url)
 
-    .get() (err, res, body) ->
-      pipl_json = JSON.parse(body)
+      .get() (err, res, body) ->
+        pipl_json = JSON.parse(body)
 
-      person_sources = "Person:\n"
-      records_source = "Records:\n"
+        person_sources = "Person:\n"
+        records_source = "Records:\n"
 
-      if pipl_json.error?
-        msg.send "Pipl Error: #{pipl_json.error}"
-      else
-        ## person
-        if pipl_json.person.sources?
-          person_sources += """ - #{person_source.name}:   #{person_source.url}\n""" for person_source in pipl_json.person.sources
+        if pipl_json.error?
+          msg.send "Pipl Error: #{pipl_json.error}"
         else
-          person_sources += """ - No information found.\n"""
+          ## person
+          if pipl_json.person.sources?
+            person_sources += """ - #{person_source.name}:   #{person_source.url}\n""" for person_source in pipl_json.person.sources
+          else
+            person_sources += """ - No information found.\n"""
 
 
-        ## related_urls (really noisy)
-        # for related_url in pipl_json.related_urls
-        #   msg.send related_url
+          ## related_urls (really noisy)
+          # for related_url in pipl_json.related_urls
+          #   msg.send related_url
 
-        ## records
-        if pipl_json.records?
-          records_source += """ - #{record.source.name}: #{record.source.url}\n""" for record in pipl_json.records
-        else
-          records_source += """ - No information found.\n"""
+          ## records
+          if pipl_json.records?
+            records_source += """ - #{record.source.name}: #{record.source.url}\n""" for record in pipl_json.records
+          else
+            records_source += """ - No information found.\n"""
 
-        pipl_summary = """
-        Pipl Profile for Email: #{target_email}
-        ------------------------------------------------
-        Total Records: #{pipl_json["@records_count"]}
+          pipl_summary = """
+          Pipl Profile for Email: #{target_email}
+          ------------------------------------------------
+          Total Records: #{pipl_json["@records_count"]}
 
-        #{person_sources}
-        #{records_source}
-        """
+          #{person_sources}
+          #{records_source}
+          """
 
-        msg.send pipl_summary
+          msg.send pipl_summary
+
+    else
+      msg.send "Pipl API key not configured. Get one at http://dev.pipl.com/"

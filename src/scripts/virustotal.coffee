@@ -10,7 +10,6 @@
 # Commands:
 #   hubot virustotal hash <hash> - Searches VirusTotal for a hash
 #   hubot virustotal url <hash> - Searches VirusTotal for a url
-#   hubot virustotal ip <hash> - Searches VirusTotal for a ip address
 #
 # Author:
 #   Scott J Roberts - @sroberts
@@ -65,6 +64,7 @@ module.exports = (robot) ->
           msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
 
 
+  #   hubot virustotal ip <hash> - Searches VirusTotal for a ip address
   #robot.respond /virustotal ip (.*)/i, (msg) ->
     #ip = msg.match[1].toLowerCase()
 
