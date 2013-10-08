@@ -13,10 +13,14 @@
 # Author:
 #   Scott J Roberts - @sroberts
 
+api_url = "http://api.hackertarget.com"
+
 module.exports = (robot) ->
   robot.respond /reverse dns (.*)/i, (msg) ->
     ip = msg.match[1].toLowerCase()
-    robot.http("http://api.hackertarget.com/reversedns/?q=#{ip}")
+    robot.http(api_url + "/reversedns/?q=#{ip}")
       .get() (err, res, body) ->
-
-        msg.send "Reverse DNS: #{body}"
+        if res.statusCode is 200
+          msg.send "Reverse DNS: #{body}"
+        else
+          msg.send "Error: Couldn't access #{api_url}."
