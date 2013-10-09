@@ -93,20 +93,11 @@ module.exports = (robot) ->
 
           if vt_json.response_code == 1
 
-            resolutions = ""
-
-            for resolution in vt_json.detected_urls
-
-
-              resolutions += "- #{resolution.url}\n
-              \t- Last Scan: #{resolution.scan_date}\n
-              \t- Malicious: #{resolution.positives} / #{resolution.total} (#{(resolution.positives / resolution.total) * 100}%)\n
-              "
-
             summary = """ VirusTotal IP Result: #{ip}
             - Detected Communicating Samples: #{vt_json.detected_communicating_samples.length}
+            - Detected URLs #{vt_json.detected_urls.length}
 
-            #{resolutions}
+            More information: https://www.virustotal.com/en/ip-address/#{ip}/information/
             """
 
             msg.send summary
