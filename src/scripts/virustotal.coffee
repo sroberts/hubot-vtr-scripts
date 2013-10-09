@@ -10,6 +10,7 @@
 # Commands:
 #   hubot virustotal hash <hash> - Searches VirusTotal for a hash
 #   hubot virustotal url <url> - Searches VirusTotal for a url
+#   hubot virustotal ip <ip> - Searches VirusTotal for a ip address
 #
 # Author:
 #   Scott J Roberts - @sroberts
@@ -81,32 +82,36 @@ module.exports = (robot) ->
     else
       msg.send "VirusTotal API key not configured. Get one at https://www.virustotal.com/en/user/ in the API tab"
 
-  #   hubot virustotal ip <hash> - Searches VirusTotal for a ip address
-  #robot.respond /virustotal ip (.*)/i, (msg) ->
-    #ip = msg.match[1].toLowerCase()
+  robot.respond /virustotal ip (.*)/i, (msg) ->
+    ip = msg.match[1].toLowerCase()
 
-    #robot.http(vt_ip_report_url)
-      #.query("apikey": VIRUS_TOTAL_API_KEY, "ip": ip)
-      #.get() (err, res, body) ->
-        #vt_json = JSON.parse(body)
+    robot.http(vt_ip_report_url)
+      .query("apikey": VIRUSTOTAL_API_KEY, "ip": ip)
+      .get() (err, res, body) ->
+        if res.statusCode is 200
+          vt_json = JSON.parse(body)
 
-        #if vt_json.response_code == 1
+          if vt_json.response_code == 1
 
-          #console.log(vt_json.resolutions)
-          # for resolution in vt_json.resolutions
-          #   console.log("#{resolution}")
+            resolutions = ""
 
-          #console.log(vt_json.detected_urls)
-          # for detected_url in vt_json.detected_urls
-          #   console.log("#{detected_url}")
+            for resolution in vt_json.detected_urls
 
-          # summary = """ VirusTotal IP Result: #{ip}
-          # - Scanned at: #{vt_json.scan_date}
-          # - Results:    #{vt_json.positives}/#{vt_json.total}
-          # - Link:       #{vt_json.permalink}
-          # """
 
-          #msg.send summary
+              resolutions += "- #{resolution.url}\n
+              \t- Last Scan: #{resolution.scan_date}\n
+              \t- Malicious: #{resolution.positives} / #{resolution.total} (#{(resolution.positives / resolution.total) * 100}%)\n
+              "
 
-        #else
-          #msg.send vt_json.verbose_msg
+            summary = """ VirusTotal IP Result: #{ip}
+            - Detected Communicating Samples: #{vt_json.detected_communicating_samples.length}
+
+            #{resolutions}
+            """
+
+            msg.send summary
+          else
+            msg.send "Error: Couldn't access #{vt_url}."
+
+        else
+          msg.send vt_json.verbose_msg
