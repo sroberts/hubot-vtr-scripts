@@ -27,7 +27,6 @@ module.exports = (robot) ->
       .get() (err, res, body) ->
         if res.statusCode is 200
           longurl_json = JSON.parse body
-          msg.send body
 
           long_url = longurl_json.longurl
 
