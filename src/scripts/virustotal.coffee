@@ -35,7 +35,7 @@ module.exports = (robot) ->
             vt_json = JSON.parse(body)
 
             if vt_json.response_code == 1
-              summary = """ VirusTotal Result: #{vt_json.resource}
+              summary = """VirusTotal Result: #{vt_json.resource}
               - Scanned at: #{vt_json.scan_date}
               - Results:    #{vt_json.positives}/#{vt_json.total}
               - Link:       #{vt_json.permalink}
@@ -63,7 +63,7 @@ module.exports = (robot) ->
             vt_json = JSON.parse(body)
 
             if vt_json.response_code == 1
-              summary = """ VirusTotal URL Result: #{vt_json.url}
+              summary = """VirusTotal URL Result: #{vt_json.url}
               - Scanned at: #{vt_json.scan_date}
               - Results:    #{vt_json.positives}/#{vt_json.total}
               - Link:       #{vt_json.permalink}
@@ -93,7 +93,7 @@ module.exports = (robot) ->
 
               if vt_json.response_code == 1
 
-                summary = """ VirusTotal IP Result: #{ip}
+                summary = """VirusTotal IP Result: #{ip}
                 - Detected Communicating Samples: #{vt_json.detected_communicating_samples.length}
                 - Detected URLs #{vt_json.detected_urls.length}
 
