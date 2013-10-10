@@ -95,9 +95,8 @@ module.exports = (robot) ->
 
                 summary = """VirusTotal IP Result: #{ip}
                 - Detected Communicating Samples: #{vt_json.detected_communicating_samples.length}
-                - Detected URLs #{vt_json.detected_urls.length}
-
-                More information: https://www.virustotal.com/en/ip-address/#{ip}/information/
+                - Detected URLs:                  #{vt_json.detected_urls.length}
+                - Link:                           https://www.virustotal.com/en/ip-address/#{ip}/information/
                 """
 
                 msg.send summary
