@@ -28,8 +28,6 @@ module.exports = (robot) ->
         if res.statusCode is 200
           longurl_json = JSON.parse body
 
-          long_url = longurl_json.longurl
-
           longurl_profile = """
           Title: #{longurl_json.title}
           URL: #{longurl_json["long-url"]}
@@ -37,4 +35,4 @@ module.exports = (robot) ->
 
           msg.send longurl_profile
         else
-          msg.send "Error: Couldn't access #{long_url}."
+          msg.send "Error: Couldn't access #{long_url_api}."
