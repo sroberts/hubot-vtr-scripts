@@ -1,0 +1,39 @@
+{
+  "name": "hubot-vtr",
+  "description": "A set of scripts to make Hubot a DFIR powerhouse",
+  "version": "1.0.0",
+  "author": "Scott J Roberts <sroberts@github.com>",
+  "license": "MIT",
+
+  "keywords": [
+    "hubot",
+    "hubot-scripts",
+    "dfir"
+  ],
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sroberts/hubot-vtr-scripts.git"
+  },
+
+  "bugs": {
+    "url": "https://github.com/sroberts/hubot-vtr-scripts/issues"
+  },
+
+  "dependencies": {
+    "coffee-script": "~1.6"
+  },
+
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "sinon-chai": "*",
+    "sinon": "*"
+  },
+
+  "main": "index.coffee",
+
+  "scripts": {
+    "test": "script/test"
+  }
+}
