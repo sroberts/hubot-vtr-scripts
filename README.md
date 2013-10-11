@@ -176,5 +176,28 @@ condition:
 ```
 > At this point this command only creates a template for writing your own rules by hand.
 
+### Additional Scripts
+Included is the ```hubot-vtr-downloader.sh``` shell script which downloads the following community developed Hubot scripts that may be useful for DFIR.
+
+These may require their own configuration.
+
+* Core
+  * announce.coffee - Send messages to all chat rooms.
+  * availability.coffee - Set your availability status so people know whether they're able to come over and chat with you or ping you over IM.
+  * deadline.coffee - Tracks when stuff is due.
+  * http-info.coffee - Returns title and description when links are posted.
+  * isup.coffee - Uses downforeveryoneorjustme.com to check if a site is up.
+  * news.coffee - Returns the latest news headlines from Google.
+  * pypi.coffee - Simple Python Package Index querying using XMLRPC API.
+  * sms.coffee - Allows Hubot to send text messages using Twilio API.
+* Administrative Scripts
+  * heroku-status.coffee - Show current Heroku status and issues.
+  * ip.coffee - Return Hubot's external IP address (via jsonip.com).
+  * reload.coffee - Allows Hubot to (re)load scripts without restart.
+  * update.coffee - Allows hubot to update itself using git pull and npm update.
+* Encoding
+  * base36.coffee - Base36 encoding and decoding.
+  * base58.coffee - Base58 encoding and decoding.
+  * base64.coffee - Base64 encoding and decoding.
 
 ## Setup
