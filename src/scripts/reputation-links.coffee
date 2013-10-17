@@ -33,6 +33,8 @@ module.exports = (robot) ->
     - Robtext:    https://pop.robtex.com/#{target_url}.html
     - CentralOps: http://centralops.net/co/DomainDossier.aspx?addr=#{target_url}&dom_whois=true&dom_dns=true&net_whois=true
     - URLVoid:    http://www.urlvoid.com/scan/#{target_url}/
+    - DShield:    http://dshield.org/ipinfo.html?ip=#{target_url}/
+    - Blocklist:  http://www.blocklist.de/en/search.html?ip=#{target_url}&action=search&send=start+search
     """
 
     msg.send reputation_links
