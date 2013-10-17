@@ -15,7 +15,7 @@
 #   Scott J Roberts - @sroberts
 
 module.exports = (robot) ->
-  robot.respond /reputation ip (d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/i, (msg) ->
+  robot.respond /reputation ip (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/i, (msg) ->
     target_ip = msg.match[1].toLowerCase()
 
     reputation_links = """#{target_ip} IP Reputation:
