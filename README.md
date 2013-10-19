@@ -204,3 +204,15 @@ These may require their own configuration.
   * base64.coffee - Base64 encoding and decoding.
 
 ## Setup
+* [Setup Hubot](https://github.com/github/hubot/blob/master/docs/README.md) - This depends a little bit on the adapter (your choice of chat platform) and where you're deploying it to (Unix, Windows Heroku, etc). Don't worry, the docs are good though.
+* Setup your environment variables (Again,depends on your platform):
+  * MYWOT_API_KEY - Sign up at http://www.mywot.com/
+  * PIPL_API_KEY - Sign up at http://dev.pipl.com/
+  * SHODAN_API_KEY - Sign up at http://www.shodanhq.com/api_doc
+  * VIRUSTOTAL_API_KEY - Sign up at https://www.virustotal.com/en/documentation/public-api/
+* Load the VTR scripts into your ```scripts/``` directory. Also feel free to run ```hubot-vtr-downloader.sh```
+* Start saving the world!
+
+## Special Thanks
+* Dat @technicalpickles for his Hubot awesomeness
+* @technoskald, @jcran,
