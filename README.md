@@ -1,7 +1,5 @@
 hubot-vtr-scripts
 =================
-![](http://i2.wp.com/cerebralrift.org/wp-content/uploads/2013/03/hubot.jpg?fit=280%2C9999) ![](http://www.i2symbol.com/images/symbols/punctuation/modifier_letter_plus_sign_u02D6_icon_256x256.png)  ![](http://files.gamebanana.com/img/ico/sprays/war_machine_3.png)
-
 This is Hubot VTR, a series of Hubot actions for making Hubot a Computer Network Defense badass. The goal of this project is to create a series of Hubot actions for OSINT collection, Network Forensics, System Forensics, Reverse Engineering and other Network Defense tasks.
 
 ## Scripts
