@@ -1,6 +1,6 @@
 {
-  "name": "hubot-vtr",
-  "description": "A set of scripts to make Hubot a DFIR powerhouse",
+  "name": "hubot-vtr-scripts",
+  "description": "A set of scripts to make Hubot a Digital Forensics & Incident Response sidekick",
   "version": "1.0.0",
   "author": "Scott J Roberts <sroberts@github.com>",
   "license": "MIT",
