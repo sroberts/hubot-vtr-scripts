@@ -31,9 +31,5 @@
     "sinon": "*"
   },
 
-  "main": "index.coffee",
-
-  "scripts": {
-    "test": "script/test"
-  }
+  "main": "index.coffee"
 }
