@@ -23,21 +23,6 @@
   "dependencies": {
     "coffee-script": "~1.6",
     "hubot-scripts": "https://github.com/github/hubot-scripts/tarball/master",
-    "announce.coffee":"",
-    "availability.coffee":"",
-    "deadline.coffee":"",
-    "http-info.coffee":"",
-    "isup.coffee":"",
-    "news.coffee":"",
-    "pypi.coffee":"",
-    "sms.coffee":"",
-    "heroku-status.coffee":"",
-    "ip.coffee":"",
-    "reload.coffee":"",
-    "update.coffee":"",
-    "base36.coffee":"",
-    "base58.coffee":"",
-    "base64.coffee":""
   },
 
   "devDependencies": {
