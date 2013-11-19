@@ -48,7 +48,6 @@ Getting the recommended community scripts necessary requires adding the followin
 | Yara | Generates template for creating Yara rules. |
 
 ### Additional Scripts
-Included is the ```hubot-vtr-downloader.sh``` shell script which downloads the following community developed Hubot scripts that may be useful for DFIR.
 
 These may require their own configuration.
 
