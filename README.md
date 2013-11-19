@@ -1,5 +1,8 @@
 hubot-vtr-scripts
 =================
+This is Hubot VTR, a series of Hubot actions for making Hubot a Computer Network Defense badass. The goal of this project is to create a series of Hubot actions for OSINT collection, Network Forensics, System Forensics, Reverse Engineering and other Network Defense tasks.
+
+I gave a presentation about Hubot VTR at BSidesDFW. Check out my [slides](https://speakerdeck.com/sroberts/using-robots-to-fight-bad-guys).
 
 This is Hubot VTR, a series of Hubot actions for making Hubot a Computer Network Defense badass. The goal of this project is to create a series of Hubot actions for OSINT collection, Network Forensics, System Forensics, Reverse Engineering and other Network Defense tasks.
 
@@ -20,12 +23,12 @@ You're done! Restart Hubot and you're good to go!
 ### Environment Variables
 Certain scripts require use of private APIs and these require API authentication keys. You set those as environment variables.
 
-* MYWOT_API_KEY
-* PIPL_API_KEY
-* SHODAN_API_KEY
-* VIRUSTOTAL_API_KEY
+* MYWOT_API_KEY - http://www.mywot.com/
+* PIPL_API_KEY - http://dev.pipl.com/
+* SHODAN_API_KEY - http://www.shodanhq.com/api_doc
+* VIRUSTOTAL_API_KEY - https://www.virustotal.com/en/documentation/public-api/
 
-How you set these up may vary on your deployment.
+How you set these up may vary on your deployment method and operating system.
 
 ### Community Scripts
 
@@ -85,3 +88,4 @@ These may require their own configuration.
 * @technicalpickels - For my endless stupid questions about Hubot!
 * @mattjay - Tests: We needed those
 * @jnewland - For driving this whole ChatOps idea
+* @jcran
