@@ -81,5 +81,7 @@ These may require their own configuration.
 | base64.coffee | Base64 encoding and decoding. |
 
 ## Special Thanks
-* @technoskald
+* @technoskald - Constant sounding board
 * @technicalpickels - For my endless stupid questions about Hubot!
+* @mattjay - Tests: We needed those
+* @jnewland - For driving this whole ChatOps idea
