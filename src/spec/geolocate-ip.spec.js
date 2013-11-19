@@ -10,9 +10,7 @@ describe('geolocation', function() {
   beforeEach(function(){
     robot = {
       respond: function(regex, callback){},
-      http: function(url){
-        //HttpClient.create(url);
-      }
+      http: function(url){}
     }
     spyOn(robot, 'respond').andCallThrough();
     spyOn(robot, 'http').andCallFake(function(){
@@ -34,7 +32,6 @@ describe('geolocation', function() {
 
   it('should generate the correct URL', function() {
     expect(robot.respond).toHaveBeenCalled();
-    console.log(robot.respond.mostRecentCall.args[1]);
     robot.respond.mostRecentCall.args[1](msg);
     expect(robot.http).toHaveBeenCalled();
     expect(robot.http.mostRecentCall.args[0]).toBeDefined();
