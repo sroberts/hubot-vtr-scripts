@@ -1,10 +1,11 @@
 /**
- * Created by mattjohansen on 11/18/13.
+ * Created by mattjohansen on 11/19/13.
  */
-var geoip = require('../scripts/geolocate-ip.coffee');
+
+var mywot = require('../scripts/mywot.coffee');
 var HttpClient = require('scoped-http-client');
 
-describe('geolocation', function() {
+describe('mywot', function() {
   var robot, msg = null;
 
   beforeEach(function(){
@@ -19,15 +20,15 @@ describe('geolocation', function() {
       spyOn(client, 'get').andReturn(function(){});
       return client
     });
-    geoip(robot);
+    mywot(robot);
     msg = {
-      match: 'geolocate 1.2.3.4'.match(robot.respond.mostRecentCall.args[0]),
+      match: 'mywot www.google.com'.match(robot.respond.mostRecentCall.args[0]),
       send: function() {}
     }
   });
 
   it('should be a function', function(){
-    expect(typeof(geoip)).toBe('function');
+    expect(typeof(mywot)).toBe('function');
   });
 
   it('should generate the correct URL', function() {
@@ -35,9 +36,10 @@ describe('geolocation', function() {
     robot.respond.mostRecentCall.args[1](msg);
     expect(robot.http).toHaveBeenCalled();
     expect(robot.http.mostRecentCall.args[0]).toBeDefined();
-    expect(robot.http.mostRecentCall.args[0]).toBe('http://api.hostip.info/get_json.php?ip=1.2.3.4')
+    expect(robot.http.mostRecentCall.args[0]).toBe('http://api.mywot.com/0.4/public_link_json2?key='+process.env.MYWOT_API_KEY+'&hosts=www.google.com/')
   });
 
   //TODO - More verbose tests to make sure this doesn't get called when Regex fails
+  //TODO - Get access to the callback to actually test the body and parsing
 
 });
