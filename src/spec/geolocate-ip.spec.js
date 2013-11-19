@@ -41,4 +41,6 @@ describe('geolocation', function() {
     expect(robot.http.mostRecentCall.args[0]).toBe('http://api.hostip.info/get_json.php?ip=1.2.3.4')
   });
 
+  //TODO - More verbose tests to make sure this doesn't get called when Regex fails
+
 });
