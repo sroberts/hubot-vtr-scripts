@@ -213,6 +213,11 @@ These may require their own configuration.
 * Load the VTR scripts into your ```scripts/``` directory. Also feel free to run ```hubot-vtr-downloader.sh```
 * Start saving the world!
 
+## Testing
+* Make sure all your API Key environmental variables are set.
+* Make sure you have jasmine-node installed.
+* jasmine-node --coffee src/spec/
+
 ## Special Thanks
 * Dat @technicalpickles for his Hubot awesomeness
 * @technoskald, @jcran,
