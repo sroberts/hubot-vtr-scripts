@@ -6,7 +6,7 @@ I gave a presentation about Hubot VTR at BSidesDFW. Check out my [slides](https:
 
 ## Setup
 
-Setting up Hubot VTR using NPM is easy.
+First things first you'll need [Node.js and NPM installed](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager), after that setting up Hubot VTR using NPM is easy.
 
 1. ```npm install hubot-vtr-scripts```
 
