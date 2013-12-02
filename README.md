@@ -214,9 +214,8 @@ These may require their own configuration.
 * Start saving the world!
 
 ## Testing
-* Make sure all your API Key environmental variables are set.
-* Make sure you have jasmine-node installed.
-* jasmine-node --coffee src/spec/
+* From the root project directory run:
+* > npm test
 
 ## Special Thanks
 * Dat @technicalpickles for his Hubot awesomeness
