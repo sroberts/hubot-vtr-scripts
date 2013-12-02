@@ -1,0 +1,43 @@
+{
+  "name": "hubot-vtr-scripts",
+  "description": "A set of scripts to make Hubot a Digital Forensics & Incident Response sidekick",
+  "version": "1.0.4",
+  "author": "Scott J Roberts <sroberts@github.com>",
+  "license": "MIT",
+
+  "keywords": [
+    "hubot",
+    "hubot-scripts",
+    "dfir"
+  ],
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sroberts/hubot-vtr-scripts.git"
+  },
+
+  "bugs": {
+    "url": "https://github.com/sroberts/hubot-vtr-scripts/issues"
+  },
+
+  "dependencies": {
+    "coffee-script": "~1.6",
+    "hubot-scripts": "https://github.com/github/hubot-scripts/tarball/master"
+  },
+
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "sinon-chai": "*",
+    "sinon": "*",
+    "jasmine-node": "latest"
+  },
+
+  "scripts":{
+    "pretest": "npm install jasmine-node"
+  , "test": "./test.sh"
+  , "posttest": "npm uninstall jasmine-node"
+  },
+
+  "main": "index.coffee"
+}
