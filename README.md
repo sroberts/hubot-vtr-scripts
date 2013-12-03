@@ -78,6 +78,10 @@ These may require their own configuration.
 | base58.coffee | Base58 encoding and decoding. |
 | base64.coffee | Base64 encoding and decoding. |
 
+## Testing
+* From the root project directory run:
+* > npm test
+
 ## Special Thanks
 * @technoskald - Constant sounding board
 * @technicalpickels - For my endless stupid questions about Hubot!

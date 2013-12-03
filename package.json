@@ -29,7 +29,14 @@
     "mocha": "*",
     "chai": "*",
     "sinon-chai": "*",
-    "sinon": "*"
+    "sinon": "*",
+    "jasmine-node": "latest"
+  },
+
+  "scripts":{
+    "pretest": "npm install jasmine-node"
+  , "test": "./test.sh"
+  , "posttest": "npm uninstall jasmine-node"
   },
 
   "main": "index.coffee"
