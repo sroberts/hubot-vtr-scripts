@@ -1,9 +1,6 @@
 /**
  * Created by mattjohansen on 12/11/13.
  */
-/**
- * Created by mattjohansen on 11/19/13.
- */
 
 var ssl = require('../scripts/ssltester.coffee');
 
