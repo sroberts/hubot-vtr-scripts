@@ -27,10 +27,10 @@ moscow_rules = [
   "Maintain a natural pace.",
   "Murphy is right.",
   "Never go against your gut; it is your operational antenna.",
-  "Once is an accident. Twice is coincidence. Three times is an enemy action. (taken from Ian Fleming's novel Goldfinger)",
   "Pick the time and place for action.",
   "There is no limit to a human being's ability to rationalize the truth.",
-  "Vary your pattern and stay within your cover."
+  "Vary your pattern and stay within your cover.",
+  "Once is an accident. Twice is coincidence. Three times is an enemy action."
 ]
 
 module.exports = (robot) ->
