@@ -94,7 +94,7 @@ module.exports = (robot) ->
               if vt_json.response_code == 1
 
                 summary = """VirusTotal IP Result: #{ip}
-                - Detected Communicating Samples: #{vt_json.detected_communicating_samples.length}
+                - Passive DNS replications:       #{vt_json.resolutions.length}
                 - Detected URLs:                  #{vt_json.detected_urls.length}
                 - Link:                           https://www.virustotal.com/en/ip-address/#{ip}/information/
                 """
