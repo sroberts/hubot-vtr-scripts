@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot geo <ip> maxmind - Gets MaxMind location associated with an IP
+#   hubot maxmind <ip> - Gets MaxMind location associated with an IP
 #
 # Author:
 #   Scott J Roberts - @sroberts
