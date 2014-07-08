@@ -21,6 +21,7 @@ Hubot> 1.1.1.1 is from Sexau, GERMANY.
 ### MyWOT
 Get reputation of a url based on [My Web of Trust](http://www.mywot.com/)
 ```
+Hubot> hubot mywot github.com
 Hubot> MyWot Result for github.com
 ---------------------------
 - Trustworthiness: Excellent (Confidence: 84%)
