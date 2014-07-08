@@ -30,4 +30,4 @@ module.exports = (robot) ->
           - #{msg.random wordlist} #{msg.random wordlist}
           """
         else
-          msg.send "Error: Couldn't access #{api_url}. Error: #{err}. Status Code: #{res.statusCode}"
+          msg.send "Error: Couldn't access #{api_url}. Error Message: #{err}. Status Code: #{res.statusCode}"
