@@ -88,3 +88,4 @@ These may require their own configuration.
 * @mattjay - Tests: We needed those
 * @jnewland - For driving this whole ChatOps idea
 * @jcran
+* @snipe - Bug Fix Awesomeness
