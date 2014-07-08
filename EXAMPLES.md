@@ -175,7 +175,7 @@ condition:
 > At this point this command only creates a template for writing your own rules by hand.
 
 ### Google Safebrowsing
-Checked the Google Safebrowsing API to see if a url is listed as malware or phishing (or both) in [Google Safebrowsing](https://developers.google.com/safe-browsing).
+Check the Google Safebrowsing API to see if a url is listed as malware or phishing (or both) in [Google Safebrowsing](https://developers.google.com/safe-browsing).
 
 ```
 Hubot> hubot gsafe ianfette.org
