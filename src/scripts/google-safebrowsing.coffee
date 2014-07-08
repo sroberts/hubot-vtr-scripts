@@ -34,7 +34,7 @@ module.exports = (robot) ->
           if res.statusCode is 200
             msg.send "[SUSPICIOUS] The URL #{gsafe_term} is listed as #{body} in Google Safebrowsing. More info: at http://www.google.com/safebrowsing/diagnostic?site=#{encodeURIComponent gsafe_term}"
           else
-             msg.send "[CLEAN] The URL is NOT curently listed as suspicious in Google Safebrowsing. More info: at http://www.google.com/safebrowsing/diagnostic?site=#{encodeURIComponent gsafe_term}"
+             msg.send "[CLEAN] The URL #{gsafe_term} is NOT curently listed as suspicious in Google Safebrowsing. More info: at http://www.google.com/safebrowsing/diagnostic?site=#{encodeURIComponent gsafe_term}"
 
     else
     	msg.send "Error: Google SafeBrowsing API key not configured. Get one at https://developers.google.com/safe-browsing/key_signup"
