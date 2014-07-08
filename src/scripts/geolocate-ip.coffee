@@ -26,4 +26,4 @@ module.exports = (robot) ->
           geolocation_json = JSON.parse(body)
           msg.send "#{geolocation_json.ip} is from #{geolocation_json.city}, #{geolocation_json.country_name}."
         else
-          msg.send "Error: Geolocation failed for #{target_ip}: #{res.statusCode}"
+          msg.send "Error: Geolocation failed for #{target_ip} using #{api_url}: #{res.statusCode}"
