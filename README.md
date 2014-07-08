@@ -23,6 +23,7 @@ Certain scripts require use of private APIs and these require API authentication
 * PIPL_API_KEY - http://dev.pipl.com/
 * SHODAN_API_KEY - http://www.shodanhq.com/api_doc
 * VIRUSTOTAL_API_KEY - https://www.virustotal.com/en/documentation/public-api/
+* GOOGLE_SAFEBROWSING_API_KEY - https://developers.google.com/safe-browsing/key_signup
 
 How you set these up may vary on your deployment method and operating system.
 
@@ -45,6 +46,7 @@ Getting the recommended community scripts necessary requires adding the followin
 | Shodan | Search engine for server strings. |
 | Short URL Expander | Take a shortened URL and find out where it redirects to. |
 | VirusTotal | Hash, URLs, IP Addresses |
+| Google Safebrowsing | Look up Safebrowsing status of a URL |
 | Yara | Generates template for creating Yara rules. |
 
 ### Additional Scripts

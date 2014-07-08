@@ -174,6 +174,19 @@ condition:
 ```
 > At this point this command only creates a template for writing your own rules by hand.
 
+### Google Safebrowsing
+Checked the Google Safebrowsing API to see if a url is listed as malware or phishing (or both) in [Google Safebrowsing](https://developers.google.com/safe-browsing).
+
+```
+Hubot> hubot gsafe ianfette.org
+Hubot> [SUSPICIOUS] The URL ianfette.org is listed as malware in Google Safebrowsing. More info: at http://www.google.com/safebrowsing/diagnostic?site=ianfette.org
+```
+
+```
+Hubot> hubot gsafe www.google.com
+Hubot> [CLEAN] The URL is NOT curently listed as suspicious in Google Safebrowsing. More info: at http://www.google.com/safebrowsing/diagnostic?site=www.google.com
+```
+
 ### Additional Scripts
 Included is the ```hubot-vtr-downloader.sh``` shell script which downloads the following community developed Hubot scripts that may be useful for DFIR.
 
