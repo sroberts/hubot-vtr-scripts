@@ -6,4 +6,5 @@ export SHODAN_API_KEY=testing
 export VIRUSTOTAL_API_KEY=testing
 export RHODEY_IP=5.6.7.8
 export RHODEY_PORT=1337
+export GOOGLE_SAFEBROWSING_API_KEY=testing
 ./node_modules/jasmine-node/bin/jasmine-node --coffee ./src/spec
