@@ -36,7 +36,7 @@ describe('codename', function() {
     robot.respond.mostRecentCall.args[1](msg);
     expect(robot.http).toHaveBeenCalled();
     expect(robot.http.mostRecentCall.args[0]).toBeDefined();
-    expect(robot.http.mostRecentCall.args[0]).toBe('https://gist.github.com/sroberts/6529712/raw/1e979071f6a9e8747d2c44cf5af7c4998e068d49/wordlist')
+    expect(robot.http.mostRecentCall.args[0]).toBe('https://gist.githubusercontent.com/sroberts/6529712/raw/1e979071f6a9e8747d2c44cf5af7c4998e068d49/wordlist')
   });
 
   //TODO - More verbose tests to make sure this doesn't get called when Regex fails
