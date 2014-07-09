@@ -36,7 +36,7 @@ describe('gsafe', function() {
     robot.respond.mostRecentCall.args[1](msg);
     expect(robot.http).toHaveBeenCalled();
     expect(robot.http.mostRecentCall.args[0]).toBeDefined();
-    expect(robot.http.mostRecentCall.args[0]).toBe('http://api.gsafe.com/0.4/public_link_json2?key='+process.env.gsafe_API_KEY+'&hosts=www.google.com/')
+    expect(robot.http.mostRecentCall.args[0]).toBe('https://sb-ssl.google.com/safebrowsing/api/lookup?client=api&apikey='+process.env.GOOGLE_SAFEBROWSING_API_KEY+'&appver=1.5&pver=3.1&url=www.google.com')
   });
 
   //TODO - More verbose tests to make sure this doesn't get called when Regex fails
