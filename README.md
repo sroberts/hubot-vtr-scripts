@@ -10,7 +10,7 @@ First things first you'll need [Node.js and NPM installed](https://github.com/jo
 
 1. ```npm install hubot-vtr-scripts```
 
-2. Add ```"hubot-vtr-scripts": ">= 1.0.5"``` to the dependences list in your Hubot `package.json`.
+2. Add ```"hubot-vtr-scripts": ">= 1.0.7"``` to the dependences list in your Hubot `package.json`.
 
 3. Add ```"hubot-vtr-scripts"``` into your `external-dependencies.json` script between the brackets.
 
