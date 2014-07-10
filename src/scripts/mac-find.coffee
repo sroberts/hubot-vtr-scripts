@@ -31,4 +31,4 @@ module.exports = (robot) ->
             vendors.push vendor if vendors.indexOf(vendor) == -1
           msg.send "Vendors: #{vendors}"
         else
-          msg.send "Error: Couldn't access coffer.com"
+          msg.send "Error: Couldn't access coffer.com. Error Message: #{err}. Status Code: #{res.statusCode}"
