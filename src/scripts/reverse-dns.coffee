@@ -23,4 +23,4 @@ module.exports = (robot) ->
         if res.statusCode is 200
           msg.send "Reverse DNS: #{body}"
         else
-          msg.send "Error: Couldn't access #{api_url}."
+          msg.send "Error: Couldn't access #{api_url}. Error Message: #{err}. Status Code: #{res.statusCode}"
