@@ -75,7 +75,7 @@ module.exports = (robot) ->
               msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
 
           else
-            msg.send "Error: Couldn't access #{vt_url}."
+            msg.send "Error: Couldn't access #{vt_url}. Error Message: #{err}. Status Code: #{res.statusCode}"
 
 
     else

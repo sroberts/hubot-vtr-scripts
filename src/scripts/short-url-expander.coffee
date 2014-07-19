@@ -35,4 +35,4 @@ module.exports = (robot) ->
 
           msg.send longurl_profile
         else
-          msg.send "Error: Couldn't access #{long_url_api}."
+          msg.send "Error: Couldn't access #{long_url_api}. Error Message: #{err}. Status Code: #{res.statusCode}"
