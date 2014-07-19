@@ -52,7 +52,7 @@ module.exports = (robot) ->
 
             msg.send shodan_profile
           else
-            msg.send "Error: Couldn't access #{api_url}."
+            msg.send "Error: Couldn't access #{api_url}. Error Message: #{err}. Status Code: #{res.statusCode}"
 
     else
         msg.send "Shodan API key not configured. Get one at http://www.shodanhq.com/api_doc"
