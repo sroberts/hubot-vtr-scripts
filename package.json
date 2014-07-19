@@ -1,7 +1,7 @@
 {
   "name": "hubot-vtr-scripts",
   "description": "A set of scripts to make Hubot a Digital Forensics & Incident Response sidekick",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "author": "Scott J Roberts <sroberts@github.com>",
   "license": "MIT",
 
@@ -31,7 +31,8 @@
     "chai": "*",
     "sinon-chai": "*",
     "sinon": "*",
-    "jasmine-node": "latest"
+    "jasmine-node": "latest",
+    "jasmine-reporters": "~0.4"
   },
 
   "scripts":{
