@@ -1,5 +1,8 @@
 hubot-vtr-scripts
 =================
+
+[![Build Status](https://travis-ci.org/sroberts/hubot-vtr-scripts.svg?branch=master)](https://travis-ci.org/sroberts/hubot-vtr-scripts)
+
 This is Hubot VTR, a series of Hubot actions for making Hubot a Computer Network Defense badass. The goal of this project is to create a series of Hubot actions for OSINT collection, Network Forensics, System Forensics, Reverse Engineering and other Network Defense tasks.
 
 I gave a presentation about Hubot VTR at BSidesDFW. Check out my [slides](https://speakerdeck.com/sroberts/using-robots-to-fight-bad-guys).
