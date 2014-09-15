@@ -100,10 +100,11 @@ module.exports = (robot) ->
                 """
 
                 msg.send summary
+                
               else
-                msg.send "Error: Couldn't access #{vt_url}."
-
+                msg.send vt_json.verbose_msg
+                
             else
-              msg.send vt_json.verbose_msg
+              msg.send "Error: Couldn't access #{vt_url}."
     else
       msg.send "VirusTotal API key not configured. Get one at https://www.virustotal.com/en/user/ in the API tab"
