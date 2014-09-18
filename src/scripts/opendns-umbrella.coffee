@@ -32,14 +32,14 @@ module.exports = (robot) ->
             opendns_json = JSON.parse body
 
             for key, value of opendns_json
-              if value is "1"
-                msg.send "Yeah... #{key} seems ok."
-              if value is "0"
-                msg.send "Not sure about that #{key}. Ask again later."
-              if value is "-1"
-                msg.send "That #{key} looks bad. It'll probably own your box. Probably."
 
-            msg.send "THE END!"
+              switch value
+                when "1" then msg.send "Yeah... #{key} seems ok. :+1:"
+                when "0" then msg.send "Not sure about that #{key}. Use at your own risk."
+                when "-1" then msg.send "That #{key} looks bad. It'll probably own your box. :-1:"
+                else
+                  "No clue. You're on your own."
+
           else
             msg.send "Doh! #{res.statusCode}: Which means that didn't work."
     else
