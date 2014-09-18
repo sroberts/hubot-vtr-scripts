@@ -8,7 +8,7 @@
 #   OPENDNS_KEY - Sign up at https://investigate.opendns.com
 #
 # Commands:
-#   hubot opendns <domain> - Gets OpenDNS Domain Reputation
+#   hubot opendns whats up with <domain> - Gets OpenDNS Domain Reputation
 #   hubot opendns rr <ip> - Gets OpenDNS Resource Record history for a given IP
 #   hubot opendns secinfo <domain> - Gets OpenDNS Security Information for a given domain
 #
