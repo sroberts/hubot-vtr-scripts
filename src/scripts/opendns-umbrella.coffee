@@ -13,34 +13,34 @@
 # Author:
 #   Scott J Roberts - @sroberts
 
-VIRUSTOTAL_API_KEY = process.env.OPENDNS_KEY
+OPENDNS_KEY = process.env.OPENDNS_KEY
+token = OPENDNS_KEY
 opendns_base = "https://investigate.api.opendns.com/"
 
 module.exports = (robot) ->
   robot.respond /opendns (.*)/i, (msg) ->
 
-    if OPENDNSKEY_KEY?
-      msg.send "#{OPENDNS_KEY}"
-    #   hash = msg.match[1].toLowerCase()
-    #   data = "apikey=#{encodeURIComponent VIRUSTOTAL_API_KEY}&resource=#{encodeURIComponent hash}"
-    #
-    #   robot.http(vt_file_report_url)
-    #     .post(data) (err, res, body) ->
-    #       if res.statusCode is 200
-    #         vt_json = JSON.parse(body)
-    #
-    #         if vt_json.response_code == 1
-    #           summary = """VirusTotal Result: #{vt_json.resource}
-    #           - Scanned at: #{vt_json.scan_date}
-    #           - Results:    #{vt_json.positives}/#{vt_json.total}
-    #           - Link:       #{vt_json.permalink}
-    #           """
-    #
-    #           msg.send summary
-    #
-    #         else
-    #           msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
-    #       else
-    #         msg.send "Error: Couldn't access #{vt_url}."
+    if OPENDNS_KEY?
+      artifact = msg.match[1].toLowerCase()
+
+      msg.http("https://investigate.api.opendns.com/domains/score/#{artifact}")
+        .headers('Authorization': 'Bearer ' + token)
+        .get() (err, res, body) ->
+
+          if res.statusCode is 200
+
+            opendns_json = JSON.parse body
+
+            for key, value of opendns_json
+              if value is "1"
+                msg.send "Yeah... #{key} seems ok."
+              if value is "0"
+                msg.send "Not sure about that #{key}. Ask again later."
+              if value is "-1"
+                msg.send "That #{key} looks bad. It'll probably own your box. Probably."
+
+            msg.send "THE END!"
+          else
+            msg.send "Doh! #{res.statusCode}: Which means that didn't work."
     else
       msg.send "OpenDNS API key not configured."
