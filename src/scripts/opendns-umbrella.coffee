@@ -17,24 +17,6 @@
 
 OPENDNS_KEY = process.env.OPENDNS_KEY
 
-# module.exports = (robot) ->
-#   robot.respond /opendns (.*)/i, (msg) ->
-#
-#     if OPENDNS_KEY?
-#       artifact = msg.match[1].toLowerCase()
-#
-#       msg.http("https://investigate.api.opendns.com/domains/categorization/#{artifact}")
-#         .headers('Authorization': 'Bearer ' + OPENDNS_KEY)
-#         .get() (err, res, body) ->
-#           if res.statusCode is 200
-#
-#             opendns_json = JSON.parse body
-#
-#           else
-#             msg.send "Doh! #{res.statusCode}: Which means that didn't work."
-#     else
-#       msg.send "OpenDNS API key not configured."
-
 module.exports = (robot) ->
   robot.respond /whats up with (.*)/i, (msg) ->
 
@@ -63,7 +45,6 @@ module.exports = (robot) ->
     else
       msg.send "OpenDNS API key not configured."
 
-module.exports = (robot) ->
   robot.respond /opendns rr (.*)/i, (msg) ->
 
     if OPENDNS_KEY?
@@ -90,7 +71,6 @@ module.exports = (robot) ->
     else
       msg.send "OpenDNS API key not configured."
 
-module.exports = (robot) ->
   robot.respond /opendns secinfo (.*)/i, (msg) ->
 
     if OPENDNS_KEY?
@@ -118,7 +98,7 @@ module.exports = (robot) ->
               msg.send response
             else
               msg.send "OpenDNS doesn't know about #{artifact}."
-        else
-          msg.send "Doh! #{res.statusCode}: Which means that didn't work."
+          else
+            msg.send "Doh! #{res.statusCode}: Which means that didn't work."
     else
       msg.send "OpenDNS API key not configured."
