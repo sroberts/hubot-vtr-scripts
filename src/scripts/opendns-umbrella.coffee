@@ -8,7 +8,7 @@
 #   OPENDNS_KEY - Sign up at https://investigate.opendns.com
 #
 # Commands:
-#   hubot opendns <url> - Gets OpenDNS Domain Reputation
+#   hubot opendns <domain> - Gets OpenDNS Domain Reputation
 #   hubot opendns rr <ip> - Gets OpenDNS Resource Record history for a given IP
 #   hubot opendns secinfo <domain> - Gets OpenDNS Security Information for a given domain
 #
@@ -16,8 +16,24 @@
 #   Scott J Roberts - @sroberts
 
 OPENDNS_KEY = process.env.OPENDNS_KEY
-token = OPENDNS_KEY
-opendns_base = "https://investigate.api.opendns.com/"
+
+# module.exports = (robot) ->
+#   robot.respond /opendns (.*)/i, (msg) ->
+#
+#     if OPENDNS_KEY?
+#       artifact = msg.match[1].toLowerCase()
+#
+#       msg.http("https://investigate.api.opendns.com/domains/categorization/#{artifact}")
+#         .headers('Authorization': 'Bearer ' + OPENDNS_KEY)
+#         .get() (err, res, body) ->
+#           if res.statusCode is 200
+#
+#             opendns_json = JSON.parse body
+#
+#           else
+#             msg.send "Doh! #{res.statusCode}: Which means that didn't work."
+#     else
+#       msg.send "OpenDNS API key not configured."
 
 module.exports = (robot) ->
   robot.respond /opendns (.*)/i, (msg) ->
@@ -26,7 +42,7 @@ module.exports = (robot) ->
       artifact = msg.match[1].toLowerCase()
 
       msg.http("https://investigate.api.opendns.com/domains/score/#{artifact}")
-        .headers('Authorization': 'Bearer ' + token)
+        .headers('Authorization': 'Bearer ' + OPENDNS_KEY)
         .get() (err, res, body) ->
 
           if res.statusCode is 200
