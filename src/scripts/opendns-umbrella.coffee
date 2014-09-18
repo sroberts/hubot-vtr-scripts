@@ -9,6 +9,7 @@
 #
 # Commands:
 #   hubot opendns <url> - Gets OpenDNS Domain Reputation
+#   hubot opendns secinfo <domain> - Gets OpenDNS Security Information for a given domain
 #
 # Author:
 #   Scott J Roberts - @sroberts
@@ -42,5 +43,37 @@ module.exports = (robot) ->
 
           else
             msg.send "Doh! #{res.statusCode}: Which means that didn't work."
+    else
+      msg.send "OpenDNS API key not configured."
+module.exports = (robot) ->
+  robot.respond /opendns secinfo (.*)/i, (msg) ->
+
+    if OPENDNS_KEY?
+      artifact = msg.match[1].toLowerCase()
+
+      msg.http("https://investigate.api.opendns.com/security/name/#{artifact}.json")
+        .headers('Authorization': 'Bearer ' + OPENDNS_KEY)
+        .get() (err, res, body) ->
+          if res.statusCode is 200
+
+            opendns_json = JSON.parse body
+
+            if opendns_json.found is true
+              response = "Here is the OpenDNS security info about #{artifact}:\n"
+
+              response += "- DGA score of #{opendns_json.dga_score}\," if opendns_json.dga_score is not 0
+              response += "- The domain name has #{opendns_json.entropy} entropy\n"
+              response += "- Google Pagerank score of #{opendns_json.pagerank}\n"
+              response += "- SecureRank2 score of #{opendns_json.securerank2}\n"
+              response += "- Popularity score of #{opendns_json.popularity}\n"
+              response += "- It looks like it could be a FastFlux domain\n" if opendns_json.fastflux is true
+              response += "- It's associate with #{opendns_json.dga_score} attacks\n" if opendns_json.attack
+              response += "- The threat type is #{opendns_json.threat_type}\n" if opendns_json.threat_type
+
+              msg.send response
+            else
+              msg.send "OpenDNS doesn't know about #{artifact}."
+        else
+          msg.send "Doh! #{res.statusCode}: Which means that didn't work."
     else
       msg.send "OpenDNS API key not configured."
