@@ -36,7 +36,7 @@ OPENDNS_KEY = process.env.OPENDNS_KEY
 #       msg.send "OpenDNS API key not configured."
 
 module.exports = (robot) ->
-  robot.respond /opendns (.*)/i, (msg) ->
+  robot.respond /whats up with (.*)/i, (msg) ->
 
     if OPENDNS_KEY?
       artifact = msg.match[1].toLowerCase()
@@ -52,7 +52,7 @@ module.exports = (robot) ->
             for key, value of opendns_json
 
               switch value
-                when "1" then msg.send "Yeah... #{key} seems ok. :+1:"
+                when "1" then msg.send "#{key} seems legit. :+1:"
                 when "0" then msg.send "Not sure about that #{key}. Use at your own risk."
                 when "-1" then msg.send "That #{key} looks bad. It'll probably own your box. :-1:"
                 else
