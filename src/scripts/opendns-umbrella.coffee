@@ -1,5 +1,5 @@
 # Description:
-#   OpenDNS Umbrella Passive DNS & Reputation
+#   OpenDNS Umbrella DNS database & Reputation
 #
 # Dependencies:
 #   None
