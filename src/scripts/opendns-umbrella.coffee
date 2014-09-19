@@ -88,7 +88,7 @@ module.exports = (robot) ->
 
               response += "- DGA score of #{opendns_json.dga_score}\," if opendns_json.dga_score is not 0
               response += "- The domain name has #{opendns_json.entropy} entropy\n"
-              response += "- Google Pagerank score of #{opendns_json.pagerank}\n"
+              response += "- Pagerank score of #{opendns_json.pagerank}\n"
               response += "- SecureRank2 score of #{opendns_json.securerank2}\n"
               response += "- Popularity score of #{opendns_json.popularity}\n"
               response += "- It looks like it could be a FastFlux domain\n" if opendns_json.fastflux is true
