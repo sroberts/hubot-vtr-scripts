@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot geo <ip> maxmind - Gets MaxMind location associated with an IP
+#   hubot maxmind <ip> - Gets MaxMind location associated with an IP
 #
 # Author:
 #   Scott J Roberts - @sroberts
@@ -26,4 +26,4 @@ module.exports = (robot) ->
           ipinfo_json = JSON.parse body
           msg.send "According to MaxMind I'm pretty sure #{ip} is in #{ipinfo_json['city']}, #{ipinfo_json['region']}, #{ipinfo_json['country_name']}."
         else
-          msg.send "Error: Couldn't access Rhodey(#{RHODEY_IP}:#{RHODEY_PORT})."
+          msg.send "Error: Couldn't access Rhodey(#{RHODEY_IP}:#{RHODEY_PORT}). Error Message: #{err}. Status Code: #{res.statusCode}"

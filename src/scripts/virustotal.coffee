@@ -75,7 +75,7 @@ module.exports = (robot) ->
               msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
 
           else
-            msg.send "Error: Couldn't access #{vt_url}."
+            msg.send "Error: Couldn't access #{vt_url}. Error Message: #{err}. Status Code: #{res.statusCode}"
 
 
     else
@@ -94,16 +94,17 @@ module.exports = (robot) ->
               if vt_json.response_code == 1
 
                 summary = """VirusTotal IP Result: #{ip}
-                - Detected Communicating Samples: #{vt_json.detected_communicating_samples.length}
+                - Passive DNS replications:       #{vt_json.resolutions.length}
                 - Detected URLs:                  #{vt_json.detected_urls.length}
                 - Link:                           https://www.virustotal.com/en/ip-address/#{ip}/information/
                 """
 
                 msg.send summary
+                
               else
-                msg.send "Error: Couldn't access #{vt_url}."
-
+                msg.send vt_json.verbose_msg
+                
             else
-              msg.send vt_json.verbose_msg
+              msg.send "Error: Couldn't access #{vt_url}."
     else
       msg.send "VirusTotal API key not configured. Get one at https://www.virustotal.com/en/user/ in the API tab"
