@@ -15,7 +15,7 @@
 #   Scott J Roberts - @sroberts
 
 module.exports = (robot) ->
-  robot.respond /reputation ip ((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))/i, (msg) ->
+  robot.respond /reputation ip (\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b)/i, (msg) ->
 
     target_ip = msg.match[1].toLowerCase()
 
