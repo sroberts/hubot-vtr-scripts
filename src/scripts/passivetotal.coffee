@@ -60,14 +60,12 @@ module.exports = (robot) ->
     else
       msg.send "PassiveTotal API key not configured."
 
-module.exports = (robot) ->
   robot.respond /ptotal classify (targeted|crime|multiple|benign) (.*)/i, (msg) ->
 
     if PASSIVETOTAL_KEY?
       classification =  msg.match[1].toLowerCase()
       value = msg.match[2].toLowerCase()
       data = "apikey=#{encodeURIComponent PASSIVETOTAL_KEY}&classification=#{classification}&value=#{encodeURIComponent value}"
-
 
       robot.http(PT_CLASSIFY_URL)
         .post(data) (err, res, body) ->
