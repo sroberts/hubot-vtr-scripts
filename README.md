@@ -28,6 +28,10 @@ Certain scripts require use of private APIs and these require API authentication
 * `VIRUSTOTAL_API_KEY` - https://www.virustotal.com/en/documentation/public-api/
 * `GOOGLE_SAFEBROWSING_API_KEY` - https://developers.google.com/safe-browsing/key_signup
 * `OPENDNS_KEY` - https://sgraph.opendns.com/tokens-view
+* `LASTLINE_KEY` - https://user.lastline.com/settings#/license/
+* `LASTLINE_TOKEN` - provided at account registration with Lastline
+* `LASTLINE_USER_DOMAIN` - For users of Lastline hosted services, this is "user.lastline.com" otherwise it is the `user.` subdomain of your Lastline Manager or Analyst FQDN.
+* `LASTLINE_ANALYSIS_DOMAIN` - For users of Lastline hosted services, this is "analysis.lastline.com" otherwise it is the `analysis.` subdomain of your Lastline Manager or Analyst FQDN.
 
 How you set these up may vary on your deployment method and operating system. For most Linux/OSX systems, you would do something like this from the command line:
 
