@@ -28,6 +28,7 @@ Certain scripts require use of private APIs and these require API authentication
 * `VIRUSTOTAL_API_KEY` - https://www.virustotal.com/en/documentation/public-api/
 * `GOOGLE_SAFEBROWSING_API_KEY` - https://developers.google.com/safe-browsing/key_signup
 * `OPENDNS_KEY` - https://sgraph.opendns.com/tokens-view
+* `PASSIVETOTAL_KEY` - https://www.passivetotal.org/account
 
 How you set these up may vary on your deployment method and operating system. For most Linux/OSX systems, you would do something like this from the command line:
 
@@ -74,6 +75,7 @@ Getting the recommended community scripts necessary requires adding the followin
 | [VirusTotal](https://github.com/sroberts/hubot-vtr-scripts/blob/master/src/scripts/virustotal.coffee) | Hash, URLs, IP Addresses |
 | [Yara](https://github.com/sroberts/hubot-vtr-scripts/blob/master/src/scripts/yara.coffee) | Generates template for creating Yara rules. |
 | [OpenDNS](https://github.com/sroberts/hubot-vtr-scripts/blob/master/src/scripts/opendns-umbrella.coffee) | Accesses the OpenDNS Investigation graph. |
+| [PassiveTotal](https://github.com/sroberts/hubot-vtr-scripts/blob/master/src/scripts/opendns-umbrella.coffee) | Access PassiveTotal passive DNS system. |
 
 ### Additional Optional Community Scripts
 
