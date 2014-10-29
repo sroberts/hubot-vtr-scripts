@@ -16,7 +16,8 @@
 PASSIVETOTAL_KEY = process.env.PASSIVETOTAL_KEY
 
 PASSIVETOTAL_API = "https://www.passivetotal.org"
-PT_PASSIVE_URL =  PASSIVETOTAL_API + "/api/passive"
+PT_PASSIVE_URL = PASSIVETOTAL_API + "/api/passive"
+PT_CLASSIFY_URL = PASSIVETOTAL_API + "/api/classify"
 
 
 module.exports = (robot) ->
@@ -51,6 +52,32 @@ module.exports = (robot) ->
             response += "\nFor full results see https://www.passivetotal.org/passive/#{pt.value}"
 
             response = "No joy sparky, PassiveTotal didn't find any resolutions but feel free to check https://www.passivetotal.org/passive/#{pt.value}.\n" if pt.resolutions.length == 0
+
+            msg.send response
+          else
+            msg.send "Doh! #{res.statusCode}: Which means that didn't work."
+    else
+      msg.send "PassiveTotal API key not configured."
+
+module.exports = (robot) ->
+  robot.respond /ptotal classify (targeted|crime|multiple|benign) (.*)/i, (msg) ->
+
+    if PASSIVETOTAL_KEY?
+      classification =  msg.match[1].toLowerCase()
+      value = msg.match[2].toLowerCase()
+      data = "apikey=#{encodeURIComponent PASSIVETOTAL_KEY}&classification=#{classification}&value=#{encodeURIComponent value}"
+
+
+      robot.http(PT_CLASSIFY_URL)
+        .post(data) (err, res, body) ->
+          if res.statusCode is 200
+
+            pt_json = JSON.parse(body)
+
+            response = "Classifying #{value} as #{classification}: "
+            response += ":+1:" if pt_json.success
+            response += ":-1:" if !pt_json.success
+            response += " Check out https://www.passivetotal.org/passive/#{value}."
 
             msg.send response
           else
