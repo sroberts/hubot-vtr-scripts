@@ -22,7 +22,7 @@ PT_CLASSIFY_URL = PASSIVETOTAL_API + "/api/classify"
 PT_CLASSIFY_TAG_ADD_URL = PASSIVETOTAL_API + "/api/tag/add"
 
 module.exports = (robot) ->
-  robot.respond /ptotal (.*)/i, (msg) ->
+  robot.respond /ptotal search (.*)/i, (msg) ->
 
     if PASSIVETOTAL_KEY?
       value = msg.match[1].toLowerCase()
