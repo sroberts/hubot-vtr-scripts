@@ -19,6 +19,7 @@ PASSIVETOTAL_API = "https://www.passivetotal.org"
 PT_PASSIVE_URL = PASSIVETOTAL_API + "/api/passive"
 PT_CLASSIFY_URL = PASSIVETOTAL_API + "/api/classify"
 
+PT_CLASSIFY_TAG_ADD_URL = PASSIVETOTAL_API + "/api/tag/add"
 
 module.exports = (robot) ->
   robot.respond /ptotal (.*)/i, (msg) ->
@@ -84,3 +85,11 @@ module.exports = (robot) ->
             msg.send "Doh! #{res.statusCode}: Which means that didn't work."
     else
       msg.send "PassiveTotal API key not configured."
+
+  robot.respond /ptotal tag add (\w+) (.*)/i, (msg) ->
+
+    if PASSIVETOTAL_KEY?
+      tag =  msg.match[1].toLowerCase()
+      value = msg.match[2].toLowerCase()
+      data = "apikey=#{encodeURIComponent PASSIVETOTAL_KEY}&tag=#{encodeURIComponent tag}&value=#{encodeURIComponent value}"
+
