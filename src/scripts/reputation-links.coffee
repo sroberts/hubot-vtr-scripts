@@ -19,7 +19,7 @@ module.exports = (robot) ->
 
     target_ip = msg.match[1].toLowerCase()
 
-    reputation_links = """#{target_ip} IP Reputation:
+    reputation_links = """Sure, here's some links about that IP Address #{target_ip}:
     - Robtex:     https://ip.robtex.com/#{target_ip}.html
     - CentralOps: http://centralops.net/co/DomainDossier.aspx?addr=#{target_ip}&dom_dns=1&dom_whois=1&net_whois=1
     - IPVoid:     http://www.ipvoid.com/scan/#{target_ip}/
@@ -32,7 +32,7 @@ module.exports = (robot) ->
   robot.respond /reputation url (.*)/i, (msg) ->
     target_url = msg.match[1].toLowerCase()
 
-    reputation_links = """#{target_url} URL Reputation:
+    reputation_links = """Sure, here's some links about that url #{target_url}:
     - Robtext:    https://pop.robtex.com/#{target_url}.html
     - CentralOps: http://centralops.net/co/DomainDossier.aspx?addr=#{target_url}&dom_whois=true&dom_dns=true&net_whois=true
     - URLVoid:    http://www.urlvoid.com/scan/#{target_url}/
