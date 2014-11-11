@@ -21,6 +21,6 @@ module.exports = (robot) ->
     robot.http(api_url + "/reversedns/?q=#{ip}")
       .get() (err, res, body) ->
         if res.statusCode is 200
-          msg.send "Reverse DNS: #{body}"
+          msg.send "The Reverse DNS for #{ip} is #{body}"
         else
           msg.send "Error: Couldn't access #{api_url}. Error Message: #{err}. Status Code: #{res.statusCode}"

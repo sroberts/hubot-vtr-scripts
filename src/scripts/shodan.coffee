@@ -36,8 +36,8 @@ module.exports = (robot) ->
 
             else
 
-              shodan_profile = """Shodan Result for #{shodan_term}
-              --------------------------------------------
+              shodan_profile = """Here's what I found on Shodan for #{shodan_term}
+
               - IP:  #{shodan_json.ip}
               - Geo: #{shodan_json.city}, #{shodan_json.region_name}, #{shodan_json.country_name}
 

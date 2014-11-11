@@ -65,7 +65,7 @@ module.exports = (robot) ->
           mywot_json = JSON.parse body
 
           if mywot_json[mywot_term][0] == undefined
-            mywot_profile = "No MyWOT information found for #{mywot_term}"
+            mywot_profile = "Couldn't find anything on Mywot for #{mywot_term}. :frowning:"
 
           else
             mywot_trustworthiness = mywot_json[mywot_term][0]

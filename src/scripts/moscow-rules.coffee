@@ -40,4 +40,4 @@ module.exports = (robot) ->
 
   robot.respond /moscow rule/i, (msg) ->
     phrase = msg.random moscow_rules
-    msg.send "Remember: " + phrase
+    msg.send "Always remember: " + phrase
