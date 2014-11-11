@@ -35,7 +35,7 @@ module.exports = (robot) ->
             records_source = "Records:\n"
 
             if pipl_json.error?
-              msg.send "Pipl Error: #{pipl_json.error}"
+              msg.send "Yeah... that didn't work: #{pipl_json.error}"
             else
               ## person
               if pipl_json.person.sources?
@@ -55,8 +55,8 @@ module.exports = (robot) ->
                 records_source += """ - No information found.\n"""
 
               pipl_summary = """
-              Pipl Profile for Email: #{target_email}
-              ------------------------------------------------
+              Ok, here's what I found about #{target_email}
+
               Total Records: #{pipl_json["@records_count"]}
 
               #{person_sources}
@@ -65,7 +65,7 @@ module.exports = (robot) ->
 
               msg.send pipl_summary
           else
-            msg.send "Error: Couldn't access #{api_url}. Error Message: #{err}. Status Code: #{res.statusCode}"
+            msg.send "I Couldn't access #{api_url}. Error Message: #{err}. Status Code: #{res.statusCode}"
 
     else
       msg.send "Pipl API key not configured. Get one at http://dev.pipl.com/"

@@ -137,7 +137,7 @@ module.exports = (robot) ->
         .post(data) (err, res, body) ->
           if res.statusCode is 200
             pt_json = JSON.parse(body)
-            
+
             response = "Looks like #{pt_json.results.length} results were tagged with #{tag}:\n"
             response += "- #{result.value}\n" for result in pt_json.results
             response += "\nThere are more details at https://www.passivetotal.org/tag/#{tag}"
@@ -148,4 +148,4 @@ module.exports = (robot) ->
           else
             msg.send "Doh! #{res.statusCode}: Which means that didn't work."
     else
-      msg.send "PassiveTotal API key not configured."
+      msg.send "PassiveTotal API key not configured. You can get one at https://investigate.opendns.com."

@@ -28,11 +28,7 @@ module.exports = (robot) ->
         if res.statusCode is 200
           longurl_json = JSON.parse body
 
-          longurl_profile = """
-          Title: #{longurl_json.title}
-          URL: #{longurl_json["long-url"]}
-          """
-
-          msg.send longurl_profile
+        msg.send "So #{short_url} is actually #{longurl_json.title} and the real URL is #{longurl_json["long-url"]}"
+        
         else
           msg.send "Error: Couldn't access #{long_url_api}. Error Message: #{err}. Status Code: #{res.statusCode}"
