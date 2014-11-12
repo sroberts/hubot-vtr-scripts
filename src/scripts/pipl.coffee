@@ -65,7 +65,7 @@ module.exports = (robot) ->
 
               msg.send pipl_summary
           else
-            msg.send "I Couldn't access #{api_url}. Error Message: #{err}. Status Code: #{res.statusCode}"
+            msg.send "I couldn't access #{api_url}. Error Message: #{err}. Status Code: #{res.statusCode}"
 
     else
       msg.send "Pipl API key not configured. Get one at http://dev.pipl.com/"
