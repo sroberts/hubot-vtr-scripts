@@ -26,4 +26,4 @@ module.exports = (robot) ->
           ipinfo_json = JSON.parse body
           msg.send "According to MaxMind I'm pretty sure #{ip} is in #{ipinfo_json['city']}, #{ipinfo_json['region']}, #{ipinfo_json['country_name']}."
         else
-          msg.send "Error: Couldn't access Rhodey(#{RHODEY_IP}:#{RHODEY_PORT}). Error Message: #{err}. Status Code: #{res.statusCode}"
+          msg.send "I couldn't access Rhodey(#{RHODEY_IP}:#{RHODEY_PORT}). Maybe this tells you something? Error Message: #{err}. Status Code: #{res.statusCode}"
