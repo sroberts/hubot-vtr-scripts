@@ -26,4 +26,4 @@ module.exports = (robot) ->
           geolocation_json = JSON.parse(body)
           msg.send "I'm pretty sure #{geolocation_json.ip} is from #{geolocation_json.city}, #{geolocation_json.country_name}."
         else
-          msg.send "Somethign didn't work trying to geolocate#{target_ip} using #{api_url}. :frowning:"
+          msg.send "Something didn't work trying to geolocate#{target_ip} using #{api_url}. :frowning:"
