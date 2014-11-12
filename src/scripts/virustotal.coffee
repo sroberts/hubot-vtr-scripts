@@ -46,7 +46,7 @@ module.exports = (robot) ->
             else
               msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
           else
-            msg.send "Error: Couldn't access #{vt_url}."
+            msg.send "Gah, couldn't get to #{vt_url}."
     else
       msg.send "VirusTotal API key not configured. Get one at https://www.virustotal.com/en/user/ in the API tab"
 
@@ -75,7 +75,7 @@ module.exports = (robot) ->
               msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
 
           else
-            msg.send "Error: Couldn't access #{vt_url}. Error Message: #{err}. Status Code: #{res.statusCode}"
+            msg.send "Gah, couldn't get to #{vt_url}. Maybe this helps? Error Message: #{err}. Status Code: #{res.statusCode}"
 
 
     else
@@ -105,6 +105,6 @@ module.exports = (robot) ->
                 msg.send vt_json.verbose_msg
 
             else
-              msg.send "Error: Couldn't access #{vt_url}."
+              msg.send "Gah, couldn't get to #{vt_url}."
     else
       msg.send "VirusTotal API key not configured. Get one at https://www.virustotal.com/en/user/ in the API tab"
