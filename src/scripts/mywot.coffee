@@ -72,11 +72,9 @@ module.exports = (robot) ->
             mywot_childfriendliness = mywot_json[mywot_term][4]
             mywot_categories = mywot_json[mywot_term]["categories"]
 
-            mywot_profile = """MyWot Result for #{mywot_term}
-            ---------------------------
-            - Trustworthiness: #{reputation(mywot_trustworthiness[0])} (Confidence: #{mywot_trustworthiness[1]}%)
-            - Child Safety:    #{reputation(mywot_childfriendliness[0])} (Confidence: #{mywot_childfriendliness[1]}%)
-            - Categories: """
+            mywot_profile = """The MyWoT community trusts #{mywot_term} about #{reputation(mywot_trustworthiness[0])} (Confidence: #{mywot_trustworthiness[1]}%).
+            For kids, they say #{reputation(mywot_childfriendliness[0])} (Confidence: #{mywot_childfriendliness[1]}%).
+            If you really want to categorize it: """
 
             for key, value of mywot_categories
               mywot_profile += "\n  - #{mywot_category_mapping[key]} (Confidence: #{value}%)"
