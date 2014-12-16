@@ -58,22 +58,6 @@ module.exports = (robot) ->
 
                 msg.send response
 
-
-            #   shodan_profile = """Shodan Result for #{shodan_term}
-            #   --------------------------------------------
-            #   - IP:  #{shodan_json.ip}
-            #   - Geo: #{shodan_json.city}, #{shodan_json.region_name}, #{shodan_json.country_name}
-            #
-            #   """
-            #
-            #   for host in shodan_json.matches
-            #     banner_array = host.banner.split "\r\n"
-            #
-            #     banner_string = ""
-            #     banner_string += " - #{banner_item}\n" for banner_item in banner_array when banner_item != ''
-            #     shodan_profile += "\n~ #{host.ip}\n------\n- Hostname:     #{host.hostnames.toString()}\n- Organization: #{host.org}\n- Port:         #{host.port}\n- Banner:       \n#{banner_string}"
-            #
-            # msg.send shodan_profile
           else
             msg.send "Error: Couldn't access #{api_url}. Error Message: #{err}. Status Code: #{res.statusCode}"
 
