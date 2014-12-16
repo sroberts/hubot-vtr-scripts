@@ -33,10 +33,11 @@ module.exports = (robot) ->
     target_url = msg.match[1].toLowerCase()
 
     reputation_links = """#{target_url} URL Reputation:
-    - Robtext:    https://pop.robtex.com/#{target_url}.html
-    - CentralOps: http://centralops.net/co/DomainDossier.aspx?addr=#{target_url}&dom_whois=true&dom_dns=true&net_whois=true
-    - URLVoid:    http://www.urlvoid.com/scan/#{target_url}/
-    - HE:         http://bgp.he.net/dns/#{target_url}#_whois
+    - Robtext:     https://pop.robtex.com/#{target_url}.html
+    - CentralOps:  http://centralops.net/co/DomainDossier.aspx?addr=#{target_url}&dom_whois=true&dom_dns=true&net_whois=true
+    - URLVoid:     http://www.urlvoid.com/scan/#{target_url}/
+    - HE:          http://bgp.he.net/dns/#{target_url}#_whois
+    - DomainTools: http://whois.domaintools.com/#{target_url}
     """
 
     msg.send reputation_links
