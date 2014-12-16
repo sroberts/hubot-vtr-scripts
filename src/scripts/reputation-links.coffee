@@ -37,7 +37,7 @@ module.exports = (robot) ->
     - CentralOps:  http://centralops.net/co/DomainDossier.aspx?addr=#{target_url}&dom_whois=true&dom_dns=true&net_whois=true
     - URLVoid:     http://www.urlvoid.com/scan/#{target_url}/
     - HE:          http://bgp.he.net/dns/#{target_url}#_whois
-    - DomainTools: http://whois.domaintools.com/#{target_url}
+    - DomainTools: https://whois.domaintools.com/#{target_url}
     """
 
     msg.send reputation_links
