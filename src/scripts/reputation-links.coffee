@@ -20,11 +20,13 @@ module.exports = (robot) ->
     target_ip = msg.match[1].toLowerCase()
 
     reputation_links = """#{target_ip} IP Reputation:
-    - Robtex:     https://ip.robtex.com/#{target_ip}.html
-    - CentralOps: http://centralops.net/co/DomainDossier.aspx?addr=#{target_ip}&dom_dns=1&dom_whois=1&net_whois=1
-    - IPVoid:     http://www.ipvoid.com/scan/#{target_ip}/
-    - HE:         http://bgp.he.net/ip/#{target_ip}#_whois
-    - SANS ISC:   https://isc.sans.edu/api/ip/#{target_ip}
+    - Robtex:         https://ip.robtex.com/#{target_ip}.html
+    - CentralOps:     http://centralops.net/co/DomainDossier.aspx?addr=#{target_ip}&dom_dns=1&dom_whois=1&net_whois=1
+    - IPVoid:         http://www.ipvoid.com/scan/#{target_ip}/
+    - HE:             http://bgp.he.net/ip/#{target_ip}#_whois
+    - SANS ISC:       https://isc.sans.edu/api/ip/#{target_ip}
+    - AlienVault OTX: https://www.alienvault.com/open-threat-exchange/ip/#{target_ip}
+    - AlienVault PDF: https://www.alienvault.com/apps/api/threat/pdf/?ip=#{target_ip}
     """
 
     msg.send reputation_links
