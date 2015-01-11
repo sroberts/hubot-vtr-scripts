@@ -8,7 +8,7 @@
 #   SHODAN_API_KEY - Sign up at http://www.shodanhq.com/api_doc
 #
 # Commands:
-#   hubot shodan <string> - Search Shodan for any information about string
+#   hubot shodan <ip> - Search Shodan for any information about ip
 #
 # Author:
 #   Scott J Roberts - @sroberts
@@ -21,9 +21,9 @@ module.exports = (robot) ->
   robot.respond /shodan (.*)/i, (msg) ->
 
     if SHODAN_API_KEY?
-      shodan_term = msg.match[1].toLowerCase()
+      shodan_ip = msg.match[1].toLowerCase()
 
-      request_url = api_url + "/api/host?key=#{SHODAN_API_KEY}&ip=#{shodan_term}"
+      request_url = api_url + "/api/host?key=#{SHODAN_API_KEY}&ip=#{shodan_ip}"
 
       robot.http(request_url)
         .get() (err, res, body) ->
@@ -32,11 +32,11 @@ module.exports = (robot) ->
             shodan_json = JSON.parse body
 
             if shodan_json.error
-              shodan_profile = "No Shodan information found for #{shodan_term}"
+              shodan_profile = "No Shodan information found for #{shodan_ip}"
 
             else
 
-              shodan_profile = """Shodan Result for #{shodan_term}
+              shodan_profile = """Shodan Result for #{shodan_ip}
               --------------------------------------------
               - IP:  #{shodan_json.ip}
               - Geo: #{shodan_json.city}, #{shodan_json.region_name}, #{shodan_json.country_name}
