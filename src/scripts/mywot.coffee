@@ -65,18 +65,16 @@ module.exports = (robot) ->
           mywot_json = JSON.parse body
 
           if mywot_json[mywot_term][0] == undefined
-            mywot_profile = "No MyWOT information found for #{mywot_term}"
+            mywot_profile = "Couldn't find anything on Mywot for #{mywot_term}. :frowning:"
 
           else
             mywot_trustworthiness = mywot_json[mywot_term][0]
             mywot_childfriendliness = mywot_json[mywot_term][4]
             mywot_categories = mywot_json[mywot_term]["categories"]
 
-            mywot_profile = """MyWot Result for #{mywot_term}
-            ---------------------------
-            - Trustworthiness: #{reputation(mywot_trustworthiness[0])} (Confidence: #{mywot_trustworthiness[1]}%)
-            - Child Safety:    #{reputation(mywot_childfriendliness[0])} (Confidence: #{mywot_childfriendliness[1]}%)
-            - Categories: """
+            mywot_profile = """The MyWoT community trusts #{mywot_term} about #{reputation(mywot_trustworthiness[0])} (Confidence: #{mywot_trustworthiness[1]}%).
+            For kids, they say #{reputation(mywot_childfriendliness[0])} (Confidence: #{mywot_childfriendliness[1]}%).
+            If you really want to categorize it: """
 
             for key, value of mywot_categories
               mywot_profile += "\n  - #{mywot_category_mapping[key]} (Confidence: #{value}%)"

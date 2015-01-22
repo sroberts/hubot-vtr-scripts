@@ -24,6 +24,6 @@ module.exports = (robot) ->
       .get() (err, res, body) ->
         if res.statusCode is 200
           geolocation_json = JSON.parse(body)
-          msg.send "#{geolocation_json.ip} is from #{geolocation_json.city}, #{geolocation_json.country_name}."
+          msg.send "I'm pretty sure #{geolocation_json.ip} is from #{geolocation_json.city}, #{geolocation_json.country_name}."
         else
-          msg.send "Error: Geolocation failed for #{target_ip} using #{api_url}: #{res.statusCode}"
+          msg.send "Something didn't work trying to geolocate#{target_ip} using #{api_url}. :frowning:"

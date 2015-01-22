@@ -29,6 +29,6 @@ module.exports = (robot) ->
             # Each non-header row.
             vendor = $(html).children().last().text()
             vendors.push vendor if vendors.indexOf(vendor) == -1
-          msg.send "Vendors: #{vendors}"
+          msg.send "So the vendors for that MAC could be #{vendors}."
         else
           msg.send "Error: Couldn't access coffer.com. Error Message: #{err}. Status Code: #{res.statusCode}"

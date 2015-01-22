@@ -92,7 +92,7 @@ module.exports = (robot) ->
               response += "- SecureRank2 score of #{opendns_json.securerank2}\n"
               response += "- Popularity score of #{opendns_json.popularity}\n"
               response += "- It looks like it could be a FastFlux domain\n" if opendns_json.fastflux is true
-              response += "- It's associate with #{opendns_json.dga_score} attacks\n" if opendns_json.attack
+              response += "- It's associated with #{opendns_json.dga_score} attacks\n" if opendns_json.attack
               response += "- The threat type is #{opendns_json.threat_type}\n" if opendns_json.threat_type
 
               msg.send response

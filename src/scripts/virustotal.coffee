@@ -35,7 +35,7 @@ module.exports = (robot) ->
             vt_json = JSON.parse(body)
 
             if vt_json.response_code == 1
-              summary = """VirusTotal Result: #{vt_json.resource}
+              summary = """Here's what VirusTotal knows about #{hash}:
               - Scanned at: #{vt_json.scan_date}
               - Results:    #{vt_json.positives}/#{vt_json.total}
               - Link:       #{vt_json.permalink}
@@ -46,7 +46,7 @@ module.exports = (robot) ->
             else
               msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
           else
-            msg.send "Error: Couldn't access #{vt_url}."
+            msg.send "Gah, couldn't get to #{vt_url}."
     else
       msg.send "VirusTotal API key not configured. Get one at https://www.virustotal.com/en/user/ in the API tab"
 
@@ -63,7 +63,7 @@ module.exports = (robot) ->
             vt_json = JSON.parse(body)
 
             if vt_json.response_code == 1
-              summary = """VirusTotal URL Result: #{vt_json.url}
+              summary = """Here's what VirusTotal knows about #{url}:
               - Scanned at: #{vt_json.scan_date}
               - Results:    #{vt_json.positives}/#{vt_json.total}
               - Link:       #{vt_json.permalink}
@@ -75,7 +75,7 @@ module.exports = (robot) ->
               msg.send "VirusTotal URL Analysis: #{vt_json.verbose_msg}"
 
           else
-            msg.send "Error: Couldn't access #{vt_url}. Error Message: #{err}. Status Code: #{res.statusCode}"
+            msg.send "Gah, couldn't get to #{vt_url}. Maybe this helps? Error Message: #{err}. Status Code: #{res.statusCode}"
 
 
     else
@@ -93,18 +93,18 @@ module.exports = (robot) ->
 
               if vt_json.response_code == 1
 
-                summary = """VirusTotal IP Result: #{ip}
+                summary = """Here's what VirusTotal knows about #{ip}:
                 - Passive DNS replications:       #{vt_json.resolutions.length}
                 - Detected URLs:                  #{vt_json.detected_urls.length}
                 - Link:                           https://www.virustotal.com/en/ip-address/#{ip}/information/
                 """
 
                 msg.send summary
-                
+
               else
                 msg.send vt_json.verbose_msg
-                
+
             else
-              msg.send "Error: Couldn't access #{vt_url}."
+              msg.send "Gah, couldn't get to #{vt_url}."
     else
       msg.send "VirusTotal API key not configured. Get one at https://www.virustotal.com/en/user/ in the API tab"

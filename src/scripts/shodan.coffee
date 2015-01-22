@@ -32,12 +32,12 @@ module.exports = (robot) ->
             shodan_json = JSON.parse body
 
             if shodan_json.error
-              shodan_profile = "No Shodan information found for #{shodan_term}"
+              shodan_profile = "Shodan didn't tell me anything useful about #{shodan_term}"
 
             else
 
-              shodan_profile = """Shodan Result for #{shodan_term}
-              --------------------------------------------
+              shodan_profile = """Here's what I found on Shodan for #{shodan_term}
+
               - IP:  #{shodan_json.ip}
               - Geo: #{shodan_json.city}, #{shodan_json.region_name}, #{shodan_json.country_name}
 
@@ -52,7 +52,7 @@ module.exports = (robot) ->
 
             msg.send shodan_profile
           else
-            msg.send "Error: Couldn't access #{api_url}. Error Message: #{err}. Status Code: #{res.statusCode}"
+            msg.send "I couldn't access #{api_url}. What I do know is just this: Error Message: #{err}. Status Code: #{res.statusCode}"
 
     else
         msg.send "Shodan API key not configured. Get one at http://www.shodanhq.com/api_doc"
