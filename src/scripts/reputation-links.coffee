@@ -30,7 +30,7 @@ module.exports = (robot) ->
     msg.send reputation_links
 
   robot.respond /reputation url (.*)/i, (msg) ->
-    target_url = msg.match[1].toLowerCase()
+    target_url = msg.match[1].toLowerCase.replace("http://","")
 
     reputation_links = """Sure, here are some links about that url #{target_url}:
     - Robtext:     https://pop.robtex.com/#{target_url}.html
